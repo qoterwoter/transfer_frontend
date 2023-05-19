@@ -36,7 +36,7 @@ const userSlice = createSlice({
     },
     extraReducers: {
         [authUser.fulfilled]: (state, action) => {
-            const data = {...action.payload, status: "Успешно"};
+            const data = {...action.payload, status: "Авторизован"};
             localStorage.setItem("user", JSON.stringify(data))
             return data
         },
