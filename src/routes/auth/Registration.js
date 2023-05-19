@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {useDispatch} from "react-redux";
 import {registerUser} from "../../reducers/userSlice";
 import {NavLink} from "react-router-dom";
+import toast from "react-hot-toast";
 
 function Registration(props) {
     const [username,setUsername] = useState('')
@@ -44,7 +45,7 @@ function Registration(props) {
         // }
         //
         if (password !== password2) {
-            alert('Пароли не совпадают')
+            toast.error('Пароли не совпадают')
             return
         }
         // if (email.length < 10) {

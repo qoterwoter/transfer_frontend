@@ -1,5 +1,5 @@
 import React from "react";
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {unAuthorize} from "../reducers/userSlice";
 
@@ -7,8 +7,12 @@ const Header = () => {
     const dispatch = useDispatch()
     const user = useSelector(state => state.user)
 
-    const handleLogout = () => {
+    const navigate = useNavigate()
+
+    const handleLogout = (e) => {
+        e.preventDefault()
         dispatch(unAuthorize())
+        navigate('/')
     }
 
     return (

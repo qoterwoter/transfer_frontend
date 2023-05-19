@@ -10,14 +10,10 @@ export const authUser = createAsyncThunk('user/authUser', async ({username, pass
 })
 
 export const registerUser = createAsyncThunk('user/registerUser', async ({firstName, lastName, username, password, email}) => {
-    try {
-        const response = await axios.post(
-            API_URL + '/register/',{first_name: firstName, last_name: lastName, username, password, email, is_artist: 'True'}
-        )
-        return response.data
-    } catch (e) {
-        return Promise.reject(e)
-    }
+    const response = await axios.post(
+        API_URL + '/register/',{first_name: firstName, last_name: lastName, username, password, email, is_artist: 'True'}
+    )
+    return response.data
 })
 
 const initialState = {

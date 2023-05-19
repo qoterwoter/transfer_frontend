@@ -8,6 +8,7 @@ import App from "./App";
 import Main from "./routes/Main";
 import Authorization from "./routes/auth/Authorization";
 import Registration from "./routes/auth/Registration";
+import MakeOrder from "./routes/MakeOrder";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -16,6 +17,7 @@ const router = createBrowserRouter(
             <Route index element={<Main/>}/>
             <Route path={'auth'} element={<Authorization/>}/>
             <Route path={'register'} element={<Registration/>}/>
+            <Route path={'order'} element={<MakeOrder/>}/>
         </Route>
     </>
     )

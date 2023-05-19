@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {authUser} from "../../reducers/userSlice";
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
+import toast from "react-hot-toast";
 
 function Authorization(props) {
     const [username, setUsername] = useState('')
@@ -13,12 +14,17 @@ function Authorization(props) {
     const user = useSelector(state => state.user)
 
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const auth = (e) => {
         e.preventDefault()
 
-        dispatch(authUser({username, password}))
-        console.log(username, password)
+        if (username.length < 5) toast.error('Введите корректное имя')
+        else if (password.length < 5) toast.error('Введите корректный пароль')
+        else {
+            toast.promise(dispatch(authUser({username, password})),
+                {loading: 'Загрузка', success: 'Успешно', error: 'Ошибка'})
+        }
     }
 
     return (
