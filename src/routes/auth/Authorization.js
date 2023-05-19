@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {authUser} from "../../reducers/userSlice";
+import {NavLink} from "react-router-dom";
 
 function Authorization(props) {
     const [username, setUsername] = useState('')
@@ -30,6 +31,9 @@ function Authorization(props) {
                 <input className="form__input" type="password" value={password} onChange={onChangePassword}/>
                 <input className="form__submit" type="submit" value={'Войти'}/>
             </form>
+            <p className="form__help">
+                Нет аккаунта ? <NavLink to={"/register"}>Регистрация</NavLink>
+            </p>
             <p className="auth__status">{user.status}</p>
         </div>
     );

@@ -7,6 +7,7 @@ import {createBrowserRouter, createRoutesFromElements, Route, RouterProvider} fr
 import App from "./App";
 import Main from "./routes/Main";
 import Authorization from "./routes/auth/Authorization";
+import Registration from "./routes/auth/Registration";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -14,6 +15,7 @@ const router = createBrowserRouter(
         <Route path={'/'} element={<App/>}>
             <Route index element={<Main/>}/>
             <Route path={'auth'} element={<Authorization/>}/>
+            <Route path={'register'} element={<Registration/>}/>
         </Route>
     </>
     )

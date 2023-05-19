@@ -6,7 +6,6 @@ export const API_URL = 'http://test.std-962.ist.mospolytech.ru/api'
 
 export const authUser = createAsyncThunk('user/authUser', async ({username, password}) => {
     const response = await axios.post(`${API_URL}/login/`, {username, password})
-    console.log(response)
     return response.data
 })
 
@@ -42,10 +41,12 @@ const userSlice = createSlice({
             return data
         },
         [authUser.rejected]: (state, action) => {
-            console.log(action)
             state.status = 'Ошибка'
             state.errorCode = action.error.message
         },
+        [registerUser.rejected]: (state, action) => {
+            console.log(action)
+        }
     }
 })
 
