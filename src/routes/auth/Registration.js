@@ -23,36 +23,12 @@ function Registration(props) {
 
     const register = (e) => {
         e.preventDefault()
-
-        // if (firstName.length < 2) {
-        //     alert('Введите корректное имя')
-        //     return
-        // }
-        //
-        // if (lastName.length < 4) {
-        //     alert('Введите корректную фамилию')
-        //     return
-        // }
-        //
-        // if (username.length < 5) {
-        //     alert('Введите корректный логин')
-        //     return
-        // }
-        //
-        // if (password.length < 5 || password2.length < 5) {
-        //     alert('Введите корректный пароль')
-        //     return
-        // }
-        //
         if (password !== password2) {
             toast.error('Пароли не совпадают')
             return
         }
-        // if (email.length < 10) {
-        //     alert('Введите корректный email')
-        //     return
-        // }
-        dispatch(registerUser({firstName, lastName, username, password, email}))
+        toast.promise(dispatch(registerUser({firstName, lastName, username, password, email})),
+            {loading: 'Загрузка', success: 'Успешно', error: 'Ошибка'})
     }
 
     return (

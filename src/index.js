@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import './styles/index.css';
 import { Provider } from 'react-redux'
 import store from "./store";
 import {createBrowserRouter, createRoutesFromElements, Route, RouterProvider} from "react-router-dom";
@@ -8,7 +8,8 @@ import App from "./App";
 import Main from "./routes/Main";
 import Authorization from "./routes/auth/Authorization";
 import Registration from "./routes/auth/Registration";
-import MakeOrder from "./routes/MakeOrder";
+import MakeOrder from "./routes/user/MakeOrder";
+import MyOrders from "./routes/user/MyOrders";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -17,7 +18,10 @@ const router = createBrowserRouter(
             <Route index element={<Main/>}/>
             <Route path={'auth'} element={<Authorization/>}/>
             <Route path={'register'} element={<Registration/>}/>
-            <Route path={'order'} element={<MakeOrder/>}/>
+        </Route>
+        <Route path={'/user'} element={<App/>}>
+            <Route path={'create'} element={<MakeOrder/>}/>
+            <Route path={'orders'} element={<MyOrders/>}/>
         </Route>
     </>
     )

@@ -10,7 +10,7 @@ const MainTitle = () => {
         <h1 className="aboutUs__title">Трансфер между Абхазией и Россией</h1>
         {user.status === 'Не авторизован' && <NavLink to={'auth'}>Войти</NavLink>}
         {user.status === 'Авторизован' && <>
-            <NavLink to={'/order'}>Сделать заказ</NavLink>
+            <NavLink to={'/user'}>Сделать заказ</NavLink>
         </>}
     </div>
     )

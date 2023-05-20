@@ -1,0 +1,84 @@
+body {
+  margin: 0;
+  font-family: Arial;
+}
+body #root {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.form {
+  display: grid;
+  justify-items: start;
+  grid-gap: 7px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #D9D9D9;
+}
+.header.header_user {
+  background-color: #353434;
+}
+.header.header_user .header__nav .menu__link {
+  color: #D9D9D9;
+}
+.header.header_user .header__nav .menu__link.active {
+  background: #D9D9D9;
+  color: black;
+}
+.header .header__title {
+  padding: 10px 37px;
+}
+.header .header__title .header__logo {
+  display: block;
+  width: 100%;
+}
+.header .header__nav {
+  display: flex;
+  flex-direction: column;
+}
+.header .header__nav .menu__link {
+  font-size: 20px;
+  text-decoration: none;
+  padding: 10px 37px;
+  color: black;
+  width: 100%;
+}
+.header .header__nav .menu__link.active {
+  background: white;
+}
+
+.main {
+  padding: 20px 60px;
+}
+.main .orders {
+  display: grid;
+  grid-gap: 12px;
+}
+.main .orders .order {
+  padding: 16px;
+  width: 900px;
+  border: 1px solid #7C7676;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
+  gap: 10px;
+}
+.main .orders .order .row__item {
+  height: 40px;
+  margin: 0;
+}
+.main .orders .order .row__item_choose {
+  grid-row: span 2;
+}
+
+/*# sourceMappingURL=index.css.map */

@@ -3,6 +3,7 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
 export const user = JSON.parse(localStorage.getItem('user')) || {}
 export const API_URL = 'http://test.std-962.ist.mospolytech.ru/api'
+export const headers = {headers: {'Authorization': `Token ${user.token}`}}
 
 export const authUser = createAsyncThunk('user/authUser', async ({username, password}) => {
     const response = await axios.post(`${API_URL}/login/`, {username, password})
