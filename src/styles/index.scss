@@ -117,6 +117,35 @@ body {
             .row__item_choose {
                 grid-row: span 2;
             }
+            .order__rate {
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 30%;
+                margin: auto;
+                background: rgba(#fff, 0.4);
+                backdrop-filter: blur(10px);
+                padding: 20px 50px;
+                width: 500px;
+                border: $border;
+                .rate__header {
+                    display: flex;
+                    justify-content: space-between;
+                    .rate__close {
+                        color: red;
+                        font-weight: 200;
+                        cursor: pointer;
+                    }
+                }
+                .rate__body {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    align-items: center;
+                    .row__input {
+                        display: flex;
+                    }
+                }
+            }
         }
     }
     .auth {

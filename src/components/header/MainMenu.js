@@ -1,9 +1,19 @@
 import React from 'react';
-import {NavLink} from "react-router-dom";
-import {useSelector} from "react-redux";
+import {NavLink, useNavigate} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {unAuthorize} from "../../reducers/userSlice";
 
 function MainMenu(props) {
     const user = useSelector(state => state.user)
+
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+
+    const handleLogout = (e) => {
+        e.preventDefault()
+        dispatch(unAuthorize())
+        navigate('/')
+    }
 
     return (
     <>
@@ -13,6 +23,7 @@ function MainMenu(props) {
         <NavLink className="menu__link link" to={'/user/create'}>Для бизнеса</NavLink>
         <NavLink className="menu__link link" to={'/user/create'}>Отзывы</NavLink>
         <NavLink className="menu__link link" to={'/user/create'}>Вопросы и ответы</NavLink>
+        {user.status==='Авторизован' && <a href="src/components/header/Header" className="menu__link" onClick={handleLogout}>Выйти</a>}
     </>
     );
 }

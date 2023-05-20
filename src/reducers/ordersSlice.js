@@ -12,6 +12,12 @@ export const makeOrder = createAsyncThunk('orders/makeOrder', async (data) => {
     return response.data
 })
 
+export const setRate = createAsyncThunk('orders/setRate', async (data) => {
+    const response = await axios.post(`${API_URL}/order-rating/${data.order}/`, data, headers)
+    console.log(response)
+    return response.data
+})
+
 const initialState = {
     orders: [],
     status: 'Нет данных'
@@ -33,6 +39,9 @@ const ordersSlice = createSlice({
         [fetchOrders.rejected]: (state, action) => {
             console.log(action)
             state.status = 'Ошибка'
+        },
+        [makeOrder.fulfilled]: (state, action) => {
+            state.orders = [...state.orders, action.payload]
         }
     }
 })

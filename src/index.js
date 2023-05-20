@@ -22,7 +22,8 @@ const router = createBrowserRouter(
         </Route>
         <Route path={'/user'} element={<App/>}>
             <Route path={'create'} element={<MakeOrder/>}/>
-            <Route path={'orders'} element={<MyOrders/>}/>
+            <Route path={'upcomingOrders'} element={<MyOrders/>}/>
+            <Route path={'pastOrders'} element={<MyOrders/>}/>
             <Route path={'support'} element={<Support/>} />
         </Route>
     </>

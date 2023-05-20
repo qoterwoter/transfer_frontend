@@ -1,17 +1,32 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import axios from "axios";
 import {API_URL, headers} from "./userSlice";
+import toast from "react-hot-toast";
 
 export const fetchRequests = createAsyncThunk('support/fetchRequests', async () => {
     const response = await axios.get(`${API_URL}/supports/`, headers)
     return response.data
 })
 
+
+const options = {
+    loading: 'Sending request...',
+    success: (data) => `Request sent successfully! ID: ${data.id}`,
+    error: (error) => `Failed to send request: ${error.message}`,
+};
+
 export const makeRequest = createAsyncThunk('support/makeRequest', async (data) => {
-    const response = await axios.post(`${API_URL}/supports/`, data, headers);
-    console.log(response)
-    return response.data
-})
+    try {
+        const response = await axios.post(`${API_URL}/supports/`, data, headers);
+        toast.success('Запрос отправлен!')
+        return response.data;
+    } catch (error) {
+        const err = error.response.data
+        throw err;
+    }
+});
+
+
 
 const initialState = {
     status: 'Нет данных',
@@ -31,6 +46,10 @@ const supportSlice = createSlice({
         [fetchRequests.rejected]: (state, action) => {
             console.log(action)
             state.status = 'Ошибка при получении данных'
+        },
+        [makeRequest.fulfilled]: (state, action) => {
+            const data = action.payload
+            state.requests = [...state.requests, data]
         }
     }
 })

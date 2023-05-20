@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import {useDispatch} from "react-redux";
 import {makeRequest} from "../../reducers/supportSlice";
+import toast from "react-hot-toast";
+import {authUser} from "../../reducers/userSlice";
 
 function MakeRequest(props) {
     const [title, setTitle] = useState('')
@@ -14,7 +16,19 @@ function MakeRequest(props) {
     const onSubmit = e => {
         e.preventDefault()
 
+        if (title.length < 1) {
+            toast.error('Напишите заголовок!')
+            return
+        }
+        if (description.length < 1) {
+            toast.error('Напишите описание ошибки!')
+            return
+        }
+
         dispatch(makeRequest({title, description}))
+
+        setTitle('')
+        setDescription('')
     }
 
     return (
@@ -24,7 +38,7 @@ function MakeRequest(props) {
         <label className={'form__label'} htmlFor={'title'}>Заголовок</label>
         <input className={'form__input'} id={'title'} value={title} onChange={onChangeTitle}/>
 
-        <label className={'form__label'} htmlFor={'description'}>Описание</label>
+        <label className={'form__label'} htmlFor={'description'}>Описание проблемы</label>
         <textarea className={'form__input'} id={'description'} value={description} onChange={onChangeDescription} rows={6}/>
 
         <input className={'form__submit'} type={'submit'} value={'Отправить запрос'}/>

@@ -2,12 +2,18 @@
   color: black;
   text-decoration: none;
   transition: 0.2s;
+  cursor: pointer;
 }
 .link:hover {
   color: #353434;
 }
 .link:active {
   color: gray;
+}
+
+.starIcon {
+  height: 25px;
+  cursor: pointer;
 }
 
 body {
@@ -122,6 +128,35 @@ body #root {
 }
 .main .orders .order .row__item_choose {
   grid-row: span 2;
+}
+.main .orders .order .order__rate {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 30%;
+  margin: auto;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  padding: 20px 50px;
+  width: 500px;
+  border: 1px solid #7C7676;
+}
+.main .orders .order .order__rate .rate__header {
+  display: flex;
+  justify-content: space-between;
+}
+.main .orders .order .order__rate .rate__header .rate__close {
+  color: red;
+  font-weight: 200;
+  cursor: pointer;
+}
+.main .orders .order .order__rate .rate__body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+.main .orders .order .order__rate .rate__body .row__input {
+  display: flex;
 }
 .main .auth {
   display: flex;

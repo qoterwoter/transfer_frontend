@@ -13,7 +13,7 @@ const MainTitle = () => {
             <NavLink className={'link'} to={'register'}>Регистрация</NavLink>
         </div>}
         {user.status === 'Авторизован' && <>
-            <NavLink to={'/user'}>Сделать заказ</NavLink>
+            <NavLink className={'aboutUs__actions actions link'} to={'/user/upcomingOrders'}>{user.username}</NavLink>
         </>}
         <h1 className="aboutUs__title">Трансфер между <br/> Абхазией и Россией</h1>
     </div>

@@ -43,6 +43,11 @@ const userSlice = createSlice({
         },
         [registerUser.rejected]: (state, action) => {
             console.log(action)
+        },
+        [registerUser.fulfilled]: (state, action) => {
+            const data = {...action.payload, status: "Авторизован"};
+            localStorage.setItem("user", JSON.stringify(data))
+            return data
         }
     }
 })
