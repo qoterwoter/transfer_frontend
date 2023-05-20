@@ -13,10 +13,12 @@ function MyOrders(props) {
     },[])
 
     return (
-    <section className={'orders'}>
-        <h2 className="orders__title">Предстоящие</h2>
-        <OrdersList orders={orders.orders}/>
-    </section>
+    <main className="main">
+        <section className={'orders'}>
+            <h2 className="orders__title">Предстоящие</h2>
+            <OrdersList orders={orders.orders}/>
+        </section>
+    </main>
     );
 }
 

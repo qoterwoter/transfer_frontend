@@ -7,9 +7,7 @@ const App = () => {
     return (
     <>
         <Header/>
-        <main className="main">
-            <Outlet/>
-        </main>
+        <Outlet/>
         <Toaster
             position="top-center"
         />

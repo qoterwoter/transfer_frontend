@@ -1,10 +1,21 @@
+.link {
+  color: black;
+  text-decoration: none;
+  transition: 0.2s;
+}
+.link:hover {
+  color: #353434;
+}
+.link:active {
+  color: gray;
+}
+
 body {
   margin: 0;
-  font-family: Arial;
+  font-family: Arial, serif;
 }
 body #root {
   display: grid;
-  grid-template-columns: 250px 1fr;
 }
 
 * {
@@ -18,11 +29,13 @@ body #root {
 }
 
 .header {
+  position: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  background-color: #D9D9D9;
+  background-color: white;
+  width: 250px;
 }
 .header.header_user {
   background-color: #353434;
@@ -53,7 +66,37 @@ body #root {
   width: 100%;
 }
 .header .header__nav .menu__link.active {
-  background: white;
+  background: #D9D9D9;
+}
+
+.main, .aboutUs {
+  margin-left: 250px;
+}
+
+.aboutUs {
+  background: url("../images/background.png") no-repeat;
+  background-size: 100% 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  padding: 55px 90px;
+}
+.aboutUs .aboutUs__title {
+  font-size: 50px;
+  font-weight: 400;
+}
+.aboutUs .aboutUs__actions {
+  display: flex;
+  width: fit-content;
+  justify-content: space-between;
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 12px 30px;
+  font-size: 20px;
+}
+.aboutUs .aboutUs__actions .actions__separator {
+  margin: 0 7px;
 }
 
 .main {
@@ -79,6 +122,14 @@ body #root {
 }
 .main .orders .order .row__item_choose {
   grid-row: span 2;
+}
+.main .auth {
+  display: flex;
+  flex-direction: column;
+}
+.main .auth .form {
+  display: grid;
+  grid-gap: 12px;
 }
 
 /*# sourceMappingURL=index.css.map */

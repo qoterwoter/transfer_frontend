@@ -7,11 +7,15 @@ const MainTitle = () => {
 
     return (
     <div className={'aboutUs'}>
-        <h1 className="aboutUs__title">Трансфер между Абхазией и Россией</h1>
-        {user.status === 'Не авторизован' && <NavLink to={'auth'}>Войти</NavLink>}
+        {user.status === 'Не авторизован' && <div className={'aboutUs__actions actions'}>
+            <NavLink className={'link'} to={'auth'}>Вход</NavLink>
+            <p className={'actions__separator'}>/</p>
+            <NavLink className={'link'} to={'register'}>Регистрация</NavLink>
+        </div>}
         {user.status === 'Авторизован' && <>
             <NavLink to={'/user'}>Сделать заказ</NavLink>
         </>}
+        <h1 className="aboutUs__title">Трансфер между <br/> Абхазией и Россией</h1>
     </div>
     )
 }
