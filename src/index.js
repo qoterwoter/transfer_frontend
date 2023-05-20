@@ -10,6 +10,7 @@ import Authorization from "./routes/auth/Authorization";
 import Registration from "./routes/auth/Registration";
 import MakeOrder from "./routes/user/MakeOrder";
 import MyOrders from "./routes/user/MyOrders";
+import Support from "./routes/user/Support";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -22,6 +23,7 @@ const router = createBrowserRouter(
         <Route path={'/user'} element={<App/>}>
             <Route path={'create'} element={<MakeOrder/>}/>
             <Route path={'orders'} element={<MyOrders/>}/>
+            <Route path={'support'} element={<Support/>} />
         </Route>
     </>
     )

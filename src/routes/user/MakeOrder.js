@@ -3,8 +3,8 @@ import {useDispatch} from "react-redux";
 import {makeOrder} from "../../reducers/ordersSlice";
 
 function MakeOrder(props) {
-    const [from, setFrom] = useState('Москва')
-    const [to, setTo] = useState('Питербург')
+    const [from, setFrom] = useState('Москва, Внуково')
+    const [to, setTo] = useState('Абхазия, Гагры')
     const [arrive, setArrive] = useState('')
     const [departure, setDeparture] = useState('')
     const [adults, setAdults] = useState(4)
@@ -38,24 +38,33 @@ function MakeOrder(props) {
     }
 
     return (
-    <form className={'makeOrder__form form'} onSubmit={onSubmit}>
-        <h2 className="order__title">Заказ</h2>
-        <label className={'form__label'} htmlFor={'from'}>Откуда: адрес, аэропорт, отель</label>
-        <input className={'form__input'} type={'text'} id={'from'} value={from} onChange={onChangeFrom}/>
-        <label className={'form__label'} htmlFor={'to'}>Куда: адрес, аэропорт, отель</label>
-        <input className={'form__input'} type={'text'} id={'to'} value={to} onChange={onChangeTo}/>
-        <label className={'form__label'} htmlFor={'arrive'}>Дата прибытия</label>
-        <input className={'form__input'} id={'arrive'} type="datetime-local" value={arrive} onChange={onChangeArrive}/>
-        <label className={'form__label'} htmlFor={'departure'}>Дата отправления</label>
-        <input className={'form__input'} id={'departure'} type="datetime-local" value={departure} onChange={onChangeDeparture}/>
-        <label className={'form__label'} htmlFor={'adults'}>Количество взрослых</label>
-        <input className={'form__input'} id={'adults'} type='number' value={adults} onChange={onChangeAdults}/>
-        <label className={'form__label'} htmlFor={'children'}>Количество детей</label>
-        <input className={'form__input'} id={'children'} type='number' value={children} onChange={onChangeChildren}/>
-        <label className={'form__label'} htmlFor={'comment'}>Комментарий к заказу</label>
-        <textarea className={'form__input'} id={'comment'} value={comment} onChange={onChangeComment} rows={6}/>
-        <input type={'submit'} value={"Заказать"}/>
-    </form>
+    <main className="main">
+        <form className={'makeOrder__form form'} onSubmit={onSubmit}>
+            <h2 className="order__title">Заказ</h2>
+            <label className={'form__label'} htmlFor={'from'}>Откуда: адрес, аэропорт, отель</label>
+            <input className={'form__input'} type={'text'} id={'from'} value={from} onChange={onChangeFrom}/>
+
+            <label className={'form__label'} htmlFor={'to'}>Куда: адрес, аэропорт, отель</label>
+            <input className={'form__input'} type={'text'} id={'to'} value={to} onChange={onChangeTo}/>
+
+            <label className={'form__label'} htmlFor={'arrive'}>Дата прибытия</label>
+            <input className={'form__input'} id={'arrive'} type="datetime-local" value={arrive} onChange={onChangeArrive}/>
+
+            <label className={'form__label'} htmlFor={'departure'}>Дата отправления</label>
+            <input className={'form__input'} id={'departure'} type="datetime-local" value={departure} onChange={onChangeDeparture}/>
+
+            <label className={'form__label'} htmlFor={'adults'}>Количество взрослых</label>
+            <input className={'form__input'} id={'adults'} type='number' value={adults} onChange={onChangeAdults}/>
+
+            <label className={'form__label'} htmlFor={'children'}>Количество детей</label>
+            <input className={'form__input'} id={'children'} type='number' value={children} onChange={onChangeChildren}/>
+
+            <label className={'form__label'} htmlFor={'comment'}>Комментарий к заказу</label>
+            <textarea className={'form__input'} id={'comment'} value={comment} onChange={onChangeComment} rows={6}/>
+
+            <input type={'submit'} value={"Заказать"}/>
+        </form>
+    </main>
     );
 }
 
