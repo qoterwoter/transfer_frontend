@@ -21,7 +21,6 @@ function Rate(props) {
             transport_rating: transport,
         }
         await dispatch(setRate(data))
-        toast.success('Отзыв отправлен!')
         props.closeRate()
     }
 

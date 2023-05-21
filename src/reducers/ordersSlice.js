@@ -21,9 +21,13 @@ export const makeOrder = createAsyncThunk('orders/makeOrder', async (data) => {
 })
 
 export const setRate = createAsyncThunk('orders/setRate', async (data) => {
-    const response = await axios.post(`${API_URL}/order-rating/${data.order}/`, data, headers)
-    console.log(response)
-    return response.data
+    try {
+        const response = await axios.post(`${API_URL}/order-rating/${data.order}/`, data, headers)
+        toast.success('Отзыв отправлен!')
+        return response.data
+    } catch (e) {
+        toast.error('Ошибка, вы уже оценили эту поездку')
+    }
 })
 
 const initialState = {
