@@ -2,8 +2,17 @@ import React, {useState} from 'react';
 import {useDispatch} from "react-redux";
 import {makeOrder} from "../../reducers/ordersSlice";
 import toast from "react-hot-toast";
+import {useNavigate} from "react-router-dom";
 
 const emojiReg = /(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])/g
+
+export function validateInput(input) {
+    if (input.value.length < 5) {
+        input.classList.add('invalid');
+    } else {
+        input.classList.remove('invalid');
+    }
+}
 
 function MakeOrder(props) {
     const [from, setFrom] = useState('')
@@ -13,16 +22,25 @@ function MakeOrder(props) {
     const [children, setChildren] = useState(0)
     const [comment, setComment] = useState('')
 
-    const onChangeFrom = e => setFrom(e.target.value)
+    const onChangeFrom = e => {
+        setFrom(e.target.value)
+        validateInput(e.target)
+    }
     const onChangeTo = e => setTo(e.target.value)
-    const onChangeDeparture = e => setDeparture(e.target.value)
+    const onChangeDeparture = e => {
+        const date = new Date(e.target.value)
+        if (date < new Date()) {
+            toast.error('Дата поездки не может быть в прошлом')
+        } else setDeparture(e.target.value)
+    }
     const onChangeAdults = e => setAdults(e.target.value)
     const onChangeChildren = e => setChildren(e.target.value)
     const onChangeComment = e => setComment(e.target.value)
 
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault()
 
         const data = {
@@ -37,7 +55,7 @@ function MakeOrder(props) {
         for(let key in data) {
             const item = String(data[key])
             if (item.match(emojiReg)) {
-                toast.error('Нельзя использовать эмодзи!')
+                    toast.error('Нельзя использовать эмодзи!')
                 return
             }
         }
@@ -52,7 +70,8 @@ function MakeOrder(props) {
             return
         }
 
-        dispatch(makeOrder(data))
+        await dispatch(makeOrder(data))
+        navigate('/user/upcomingOrders')
     }
 
     return (

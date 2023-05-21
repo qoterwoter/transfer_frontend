@@ -59,7 +59,8 @@ function OrderDetail(props) {
                             <a href="" className="column__action link">Отменить</a>
                         </div>
                     </div>
-                    <div className="orderDetail__about">
+                    <div className="orderDetail__about about">
+                        <h3 className="about__title">О заказе</h3>
                         <p className="about__row">Количество взрослых: {order?.men_amount}</p>
                         <p className="about__row">Количество детей: {order?.children_amount}</p>
                         <p className="about__row">Комментарий к заказу: {order?.comment}</p>

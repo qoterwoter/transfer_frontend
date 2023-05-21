@@ -33,9 +33,6 @@ const Main = () => {
         <MainTitle/>
         <main className="main">
             <div className="general">
-                <h2 className={'general__tagline'}>Transfer Abkhazia - это сервис бронирования трансфера между Абхазией и Россией.
-                    На нашем сервисе вы можете онлайн оставить заявку на трансфер и выбрать
-                    понравившегося водителя по выгодной цене. </h2>
                 <div className="general__features features">
                     {features.map((feature, id) => <Features feature={feature} key={`feature${id}`}/>)}
                 </div>

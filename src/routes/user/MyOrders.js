@@ -43,7 +43,7 @@ function MyOrders(props) {
             <div className="orders__header">
                 <div className="header__title">
                     <h2 className="orders__title">{ends ? 'Предстоящие' : "Прошедшие"}</h2>
-                    {userTag(user.username)}
+                    {userTag(user)}
                 </div>
                 <form className="orders__sort">
                     <h3 className="sort__title">Сортировать по</h3>

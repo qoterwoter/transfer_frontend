@@ -2,8 +2,8 @@ import React from "react";
 import {NavLink} from "react-router-dom";
 import {useSelector} from "react-redux";
 
-export const userTag = (username) => {
-    return <p className={'userTag'}>{username}</p>
+export const userTag = (user) => {
+    return <p className={'userTag'}>{user.first_name} {user.last_name}</p>
 
 }
 
@@ -18,9 +18,11 @@ const MainTitle = () => {
             <NavLink className={'link'} to={'register'}>Регистрация</NavLink>
         </div>}
         {user.status === 'Авторизован' && <>
-            {userTag(user.username)}
+            {userTag(user)}
         </>}
-        <h1 className="mainTitle__title">Трансфер между <br/> Абхазией и Россией</h1>
+        <h1 className="mainTitle__title">Трансфер между Абхазией и Россией</h1>
+        <p className="mainTitle__description">Transfer Abkhazia - это сервис бронирования трансфера между
+            Абхазией и Россией. На нашем сервисе вы можете онлайн оставить заявку на трансфер и выбрать понравившегося водителя по выгодной цене.</p>
     </div>
     )
 }

@@ -131,8 +131,12 @@ body #root {
   padding: 55px 90px;
 }
 .mainTitle .mainTitle__title {
+  margin: 30px auto;
   font-size: 50px;
   font-weight: 400;
+}
+.mainTitle .mainTitle__description {
+  font-size: 20px;
 }
 .mainTitle .mainTitle__actions {
   display: flex;
@@ -173,9 +177,11 @@ body #root {
   justify-content: space-between;
 }
 .main .orders .orders__header .orders__sort {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
   align-items: center;
+}
+.main .orders .orders__header .orders__sort .sort__item {
+  margin: 0 25px;
 }
 .main .orders .order {
   padding: 16px;
@@ -234,7 +240,6 @@ body #root {
   font-size: 30px;
 }
 .main .general .general__features {
-  margin-top: 70px;
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -355,7 +360,7 @@ body #root {
   border: 2px solid gray;
   border-radius: 10px;
   width: 100%;
-  padding: 20px;
+  padding: 35px;
   justify-content: center;
 }
 .main .orderDetail .orderDetail__body .orderDetail__noResponses .arrow {

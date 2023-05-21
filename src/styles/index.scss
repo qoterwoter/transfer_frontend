@@ -117,8 +117,12 @@ body {
     align-items: end;
     padding: 55px 90px;
     .mainTitle__title {
+        margin: 30px auto;
         font-size: 50px;
         font-weight: 400;
+    }
+    .mainTitle__description {
+        font-size: 20px;
     }
     .mainTitle__actions {
         display: flex;
@@ -163,10 +167,10 @@ body {
                 justify-content: space-between;
             }
             .orders__sort {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
+                display: flex;
                 align-items: center;
-                .sort__action {
+                .sort__item {
+                    margin: 0 25px;
                 }
             }
         }
@@ -231,7 +235,6 @@ body {
             font-size: 30px;
         }
         .general__features {
-            margin-top: 70px;
             display: flex;
             width: 100%;
             justify-content: space-between;
@@ -357,7 +360,7 @@ body {
                 border: 2px solid gray;
                 border-radius: 10px;
                 width: 100%;
-                padding: 20px;
+                padding: 35px;
                 justify-content: center;
                 .arrow {
                     display: block;

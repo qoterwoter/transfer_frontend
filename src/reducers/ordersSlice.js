@@ -1,6 +1,7 @@
 import axios from "axios";
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {API_URL, headers} from "./userSlice";
+import toast from "react-hot-toast";
 
 export const fetchOrders = createAsyncThunk('orders/fetchOrders', async () => {
     const response = await axios.get(`${API_URL}/orders/`, headers)
@@ -15,6 +16,7 @@ export const orderDetail = createAsyncThunk('orders/orderDetail', async (id) => 
 
 export const makeOrder = createAsyncThunk('orders/makeOrder', async (data) => {
     const response = await axios.post(`${API_URL}/orders/`, data, headers)
+    toast.success('Заявка оставлена!')
     return response.data
 })
 
