@@ -5,12 +5,13 @@ import {orderDetail} from "../../reducers/ordersSlice";
 import {beautyTime} from "./OrdersList";
 import {userTag} from "../MainTitle";
 import arrow from '../../images/arrow.png'
+import NoResponses from "./NoResponses";
 
 export const getDuration = (timeString) => {
     const [hoursStr, minutesStr] = timeString.split(":");
     const hours = parseInt(hoursStr, 10);
     const minutes = parseInt(minutesStr, 10);
-    return `${hours} ч.` + (minutes > 0 ? `${minutes} мин.` : '');
+    return `${hours} ч.` + (minutes > 0 ? ` ${minutes} мин.` : '');
 }
 
 function OrderDetail(props) {
@@ -65,7 +66,7 @@ function OrderDetail(props) {
                         <p className="about__row">Создан: {beautyTime(order?.created_at)}</p>
                         <p className="about__row">Комментарий к заказу: {order?.comment}</p>
                     </div>
-                    {responses?.length > 0 && <div className={'orderDetail__responses responses'}>
+                    {responses?.length > 0 ? <div className={'orderDetail__responses responses'}>
                         <h2 className="responses__title">Доступные водители</h2>
                         {responses.map(response => {
                             const car = response?.driver?.car
@@ -79,7 +80,7 @@ function OrderDetail(props) {
                                 </div>
                             </div>
                         })}
-                    </div>}
+                    </div> : <NoResponses/>}
                 </div>
             </div>
         </main>

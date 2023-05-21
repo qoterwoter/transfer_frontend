@@ -349,5 +349,39 @@ body #root {
   margin: 0;
   font-size: 20px;
 }
+.main .orderDetail .orderDetail__body .orderDetail__noResponses {
+  margin-top: 50px;
+  display: flex;
+  border: 2px solid gray;
+  border-radius: 10px;
+  width: 100%;
+  padding: 20px;
+  justify-content: center;
+}
+.main .orderDetail .orderDetail__body .orderDetail__noResponses .arrow {
+  display: block;
+  height: min-content;
+  width: 200px;
+  margin: 30px;
+}
+.main .orderDetail .orderDetail__body .orderDetail__noResponses .column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.main .orderDetail .orderDetail__body .orderDetail__noResponses .column .row__circle {
+  width: 70px;
+  height: 70px;
+  border-radius: 50px;
+}
+.main .orderDetail .orderDetail__body .orderDetail__noResponses .column .row__circle.row__circle_red {
+  background-color: #D07070;
+}
+.main .orderDetail .orderDetail__body .orderDetail__noResponses .column .row__circle.row__circle_white {
+  border: 2px solid black;
+}
+.main .orderDetail .orderDetail__body .orderDetail__noResponses .column:last-child {
+  justify-content: space-evenly;
+}
 
 /*# sourceMappingURL=index.css.map */

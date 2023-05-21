@@ -6,8 +6,8 @@ import toast from "react-hot-toast";
 const emojiReg = /(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])/g
 
 function MakeOrder(props) {
-    const [from, setFrom] = useState('Москва, Внуково')
-    const [to, setTo] = useState('Абхазия, Гагры')
+    const [from, setFrom] = useState('')
+    const [to, setTo] = useState('')
     const [departure, setDeparture] = useState('')
     const [adults, setAdults] = useState(1)
     const [children, setChildren] = useState(0)
@@ -42,7 +42,7 @@ function MakeOrder(props) {
             }
         }
 
-        if (from.length < 5 || to.length < 5) {
+        if (from.length < 3 || to.length < 3) {
             toast.error('Заполните адреса')
             return
         }

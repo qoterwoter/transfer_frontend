@@ -351,6 +351,40 @@ body {
                     }
                 }
             }
+            .orderDetail__noResponses {
+                margin-top: 50px;
+                display: flex;
+                border: 2px solid gray;
+                border-radius: 10px;
+                width: 100%;
+                padding: 20px;
+                justify-content: center;
+                .arrow {
+                    display: block;
+                    height: min-content;
+                    width: 200px;
+                    margin: 30px;
+                }
+                .column {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    .row__circle {
+                        width: 70px;
+                        height: 70px;
+                        border-radius: 50px;
+                        &.row__circle_red {
+                            background-color: $red;
+                        }
+                        &.row__circle_white {
+                            border: 2px solid black;
+                        }
+                    }
+                    &:last-child {
+                        justify-content: space-evenly;
+                    }
+                }
+            }
         }
     }
 }
