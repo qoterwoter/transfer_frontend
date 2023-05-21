@@ -21,7 +21,7 @@ function MyOrders(props) {
 
     useEffect(() => {
         if(sortBy==='dateCreate') {
-            setSortedOrders([...orders].sort((a, b) => new Date(a.created_at) - new Date(b.created_at)))
+            setSortedOrders([...orders].sort((a, b) => new Date(b.created_at) - new Date(a.created_at)))
         }
         if(sortBy==='dateDeparture') {
             setSortedOrders([...orders].sort((a, b) => new Date(a.departure_time) - new Date(b.departure_time)))

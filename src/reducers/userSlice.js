@@ -1,12 +1,13 @@
 import axios from "axios";
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-
+import toast from "react-hot-toast";
 export const user = JSON.parse(localStorage.getItem('user')) || {}
-export const API_URL = 'http://127.0.0.1:8000/api'
+export const API_URL = 'http://transferabkhazia.ru/api'
 export const headers = {headers: {'Authorization': `Token ${user.token}`}}
 
 export const authUser = createAsyncThunk('user/authUser', async ({username, password}) => {
     const response = await axios.post(`${API_URL}/login/`, {username, password})
+    toast.success('Успешно!')
     return response.data
 })
 

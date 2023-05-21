@@ -16,14 +16,14 @@ function Authorization(props) {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    const auth = (e) => {
+    const auth = async (e) => {
         e.preventDefault()
 
         if (username.length < 5) toast.error('Введите корректное имя')
         else if (password.length < 5) toast.error('Введите корректный пароль')
         else {
-            toast.promise(dispatch(authUser({username, password})),
-                {loading: 'Загрузка', success: 'Успешно', error: 'Ошибка'})
+            await dispatch(authUser({username, password}))
+            window.location.reload();
         }
     }
 
