@@ -6,6 +6,13 @@ import {beautyTime} from "./OrdersList";
 import {userTag} from "../MainTitle";
 import arrow from '../../images/arrow.png'
 
+export const getDuration = (timeString) => {
+    const [hoursStr, minutesStr] = timeString.split(":");
+    const hours = parseInt(hoursStr, 10);
+    const minutes = parseInt(minutesStr, 10);
+    return `${hours} ч.` + (minutes > 0 ? `${minutes} мин.` : '');
+}
+
 function OrderDetail(props) {
     const { id } = useParams();
 
@@ -20,6 +27,8 @@ function OrderDetail(props) {
 
     console.log(order)
 
+    const responses = order?.driver_responses
+
     return (
         <main className={'main'}>
             <div className="orderDetail">
@@ -32,7 +41,7 @@ function OrderDetail(props) {
                     {userTag(user.username)}
                 </div>
                 <div className="orderDetail__body">
-                    <h3 className="order__datetime">{beautyTime(order?.departure_time,'time')}</h3>
+                    <h3 className="order__datetime">Рейс №{order?.order_id}. {beautyTime(order?.departure_time,'time')}</h3>
                     <div className="orderDetail__route route">
                         <div className="route__column column">
                             <div className="column__points">
@@ -50,8 +59,27 @@ function OrderDetail(props) {
                         </div>
                     </div>
                     <div className="orderDetail__about">
-
+                        <p className="about__row">Количество взрослых: {order?.men_amount}</p>
+                        <p className="about__row">Количество детей: {order?.children_amount}</p>
+                        <p className="about__row">Комментарий к заказу: {order?.comment}</p>
+                        <p className="about__row">Создан: {beautyTime(order?.created_at)}</p>
+                        <p className="about__row">Комментарий к заказу: {order?.comment}</p>
                     </div>
+                    {responses?.length > 0 && <div className={'orderDetail__responses responses'}>
+                        <h2 className="responses__title">Доступные водители</h2>
+                        {responses.map(response => {
+                            const car = response?.driver?.car
+
+                            return <div className={'response'} key={response.id}>
+                                <img className={'response__carPhoto'} src={car?.car_photo_path}/>
+                                <div className="response__description">
+                                    <p className="response__carName">{car?.name}</p>
+                                    <p className="response__duration">Длительность поездки: {getDuration(response?.duration)}</p>
+                                    <p className="response__duration">Стоимость: {response?.price} р.</p>
+                                </div>
+                            </div>
+                        })}
+                    </div>}
                 </div>
             </div>
         </main>

@@ -77,7 +77,6 @@ function MyOrders(props) {
                 <OrdersList orders={sortedOrders.filter(order => {
                     const now = new Date().valueOf()
                     const orderDate = new Date(order.departure_time).valueOf()
-                    console.log(orderDate > now)
                     return orderDate >= now
                 })}/>
             </> : <>

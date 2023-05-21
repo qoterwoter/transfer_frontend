@@ -323,6 +323,34 @@ body {
                     }
                 }
             }
+            .orderDetail__responses {
+                .responses__title {
+                    margin-bottom: 0;
+                }
+                display: grid;
+                grid-gap: 32px;
+                .response {
+                    display: grid;
+                    grid-template-columns: 1fr 2fr;
+                    border-radius: 10px;
+                    border: $border;
+                    .response__carPhoto {
+                        border-radius: 10px 0 0 10px ;
+                        display: block;
+                        width: 340px;
+                        height: 186px;
+                        object-fit: cover;
+                        overflow: hidden;
+                    }
+                    .response__description {
+                        padding: 12px;
+                        .response__carName {
+                            margin: 0;
+                            font-size: 20px;
+                        }
+                    }
+                }
+            }
         }
     }
 }

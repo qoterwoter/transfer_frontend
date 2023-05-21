@@ -321,5 +321,33 @@ body #root {
 .main .orderDetail .orderDetail__body .route .route__column:last-child {
   justify-self: end;
 }
+.main .orderDetail .orderDetail__body .orderDetail__responses {
+  display: grid;
+  grid-gap: 32px;
+}
+.main .orderDetail .orderDetail__body .orderDetail__responses .responses__title {
+  margin-bottom: 0;
+}
+.main .orderDetail .orderDetail__body .orderDetail__responses .response {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  border-radius: 10px;
+  border: 1px solid #7C7676;
+}
+.main .orderDetail .orderDetail__body .orderDetail__responses .response .response__carPhoto {
+  border-radius: 10px 0 0 10px;
+  display: block;
+  width: 340px;
+  height: 186px;
+  object-fit: cover;
+  overflow: hidden;
+}
+.main .orderDetail .orderDetail__body .orderDetail__responses .response .response__description {
+  padding: 12px;
+}
+.main .orderDetail .orderDetail__body .orderDetail__responses .response .response__description .response__carName {
+  margin: 0;
+  font-size: 20px;
+}
 
 /*# sourceMappingURL=index.css.map */
