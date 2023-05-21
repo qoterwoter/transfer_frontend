@@ -8,7 +8,8 @@ export const fetchOrders = createAsyncThunk('orders/fetchOrders', async () => {
 })
 
 export const orderDetail = createAsyncThunk('orders/orderDetail', async (id) => {
-    const response = await axios.get(`${API_URL}/orders/${id}/`, headers)
+    // const response = await axios.get(`${API_URL}/orders/${id}/`, headers)
+    const response = await axios.get(`${API_URL}/orderDetail/${id}`, headers)
     return response.data
 })
 

@@ -35,7 +35,10 @@ function Registration(props) {
         <main className="main">
             <div className={'register'}>
                 <form className='registerForm form' onSubmit={register}>
-                    <div className="row">
+                    <div className="form__header">
+                        <h2 className="header__title">Регистрация</h2>
+                    </div>
+                    <div className="form__body">
                         <label className='form__label' htmlFor='firstName'>Введите имя:</label>
                         <input
                             className='form__input'
@@ -45,8 +48,6 @@ function Registration(props) {
                             onChange={onChangeFirstName}
                             value={firstName}
                         />
-                    </div>
-                    <div className="row">
                         <label className='form__label' htmlFor='lastName'>Введите фамилию:</label>
                         <input
                             className='form__input'
@@ -56,8 +57,6 @@ function Registration(props) {
                             onChange={onChangeLastName}
                             value={lastName}
                         />
-                    </div>
-                    <div className="row">
                         <label className='form__label' htmlFor='login'>Введите логин:</label>
                         <input
                             className='form__input'
@@ -67,8 +66,6 @@ function Registration(props) {
                             onChange={onChangeUsername}
                             value={username}
                         />
-                    </div>
-                    <div className="row">
                         <label className='form__label' htmlFor='email'>Почта:</label>
                         <input
                             className='form__input'
@@ -78,8 +75,6 @@ function Registration(props) {
                             onChange={onChangeEmail}
                             value={email}
                         />
-                    </div>
-                    <div className="row">
                         <label className='form__label' htmlFor='password'>Введите пароль:</label>
                         <input
                             className='form__input'
@@ -89,8 +84,6 @@ function Registration(props) {
                             onChange={onChangePassword}
                             value={password}
                         />
-                    </div>
-                    <div className="row">
                         <label className='form__label' htmlFor='password2'>Подтвердите пароль:</label>
                         <input
                             className='form__input'
@@ -101,7 +94,7 @@ function Registration(props) {
                             value={password2}
                         />
                     </div>
-                    <div className="row row_submit">
+                    <div className="form__footer">
                         <input
                             className='form__input_submit form__input'
                             type='submit'
@@ -109,10 +102,9 @@ function Registration(props) {
                             onClick={register}
                         />
                         <p className="form__help">
-                            Уже есть аккаунт ? <NavLink to={"/auth"}>Войти</NavLink>
+                            Уже есть аккаунт ? <NavLink className={'Войти'} to={"/auth"}>Войти</NavLink>
                         </p>
                     </div>
-                    {/*<p>Статус: {userData.status}</p>*/}
                 </form>
             </div>
         </main>

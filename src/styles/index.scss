@@ -287,10 +287,10 @@ body {
             }
         }
         .orderDetail__body {
-            .order {
+            .route {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
-                .order__column {
+                .route__column {
                     display: flex;
                     flex-direction: column;
                     gap: 15px;

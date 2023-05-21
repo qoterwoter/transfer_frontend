@@ -18,10 +18,10 @@ function MainMenu(props) {
     return (
     <>
         <NavLink className="menu__link link" to={'/'}>Главная</NavLink>
-        {user.status === 'Авторизован' && <NavLink to={'/user/create'} className="menu__link">Мой кабинет</NavLink>}
-        <NavLink className="menu__link link" to={'/user/create'}>Стать перевозчиком</NavLink>
+        {user.status === 'Авторизован' && <NavLink to={'/user/upcomingOrders'} className="menu__link">Мой кабинет</NavLink>}
+        <NavLink className="menu__link link" to={'/user/upcomingOrders'}>Стать перевозчиком</NavLink>
         <a className="menu__link link" href={'#feedback'} >Отзывы</a>
-        <NavLink className="menu__link link" to={'/user/create'}>Вопросы и ответы</NavLink>
+        <NavLink className="menu__link link" to={'/user/upcomingOrders'}>Вопросы и ответы</NavLink>
         {user.status==='Авторизован' && <a href="src/components/header/Header" className="menu__link" onClick={handleLogout}>Выйти</a>}
     </>
     );

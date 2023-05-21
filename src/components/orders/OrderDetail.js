@@ -33,8 +33,8 @@ function OrderDetail(props) {
                 </div>
                 <div className="orderDetail__body">
                     <h3 className="order__datetime">{beautyTime(order?.departure_time,'time')}</h3>
-                    <div className="orderDetail__order order">
-                        <div className="order__column column">
+                    <div className="orderDetail__route route">
+                        <div className="route__column column">
                             <div className="column__points">
                                 <p className="point point_a">A</p>
                                 <div className="point__place">{order?.from_location}</div>
@@ -45,9 +45,12 @@ function OrderDetail(props) {
                                 <div className="point__place">{order?.to_location}</div>
                             </div>
                         </div>
-                        <div className="order__column column">
+                        <div className="route__column column">
                             <a href="" className="column__action link">Отменить</a>
                         </div>
+                    </div>
+                    <div className="orderDetail__about">
+
                     </div>
                 </div>
             </div>
