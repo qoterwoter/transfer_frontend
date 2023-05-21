@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import RateStars from "./RateStars";
 import {useDispatch} from "react-redux";
 import {setRate} from "../../reducers/ordersSlice";
+import toast from "react-hot-toast";
 
 function Rate(props) {
     const [communication, setCommunication] = useState(1)
@@ -10,7 +11,7 @@ function Rate(props) {
 
     const dispatch = useDispatch()
 
-    const onSubmit = e => {
+    const onSubmit = async e => {
         e.preventDefault()
 
         const data = {
@@ -19,7 +20,9 @@ function Rate(props) {
             driver_rating: driver,
             transport_rating: transport,
         }
-        dispatch(setRate(data))
+        await dispatch(setRate(data))
+        toast.success('Отзыв отправлен!')
+        props.closeRate()
     }
 
     return(
