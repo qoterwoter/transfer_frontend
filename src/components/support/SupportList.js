@@ -13,7 +13,7 @@ function SupportList(props) {
     <>
         {requests.map((request, id) => {
             return <div className={'request'} key={`request${id}`}>
-                <h3 className="request__title">{request.title}</h3>
+                <h3 className="request__title">#{id+1}. {request.title}</h3>
                 <p className="request__description">{request.description}</p>
                 <p className={"request__status request__status_"+request.status}>{statuses[request.status]}</p>
             </div>

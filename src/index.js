@@ -11,6 +11,7 @@ import Registration from "./routes/auth/Registration";
 import MakeOrder from "./routes/user/MakeOrder";
 import MyOrders from "./routes/user/MyOrders";
 import Support from "./routes/user/Support";
+import OrderDetail from "./components/orders/OrderDetail";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -24,7 +25,9 @@ const router = createBrowserRouter(
             <Route path={'create'} element={<MakeOrder/>}/>
             <Route path={'upcomingOrders'} element={<MyOrders/>}/>
             <Route path={'pastOrders'} element={<MyOrders/>}/>
-            <Route path={'support'} element={<Support/>} />
+            <Route path={'support'} element={<Support/>}/>
+            <Route path={'upcomingOrders/:id'} element={<OrderDetail/>}/>
+
         </Route>
     </>
     )

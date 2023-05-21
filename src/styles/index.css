@@ -16,6 +16,13 @@
   cursor: pointer;
 }
 
+.userTag {
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 12px 30px;
+  font-size: 20px;
+}
+
 body {
   margin: 0;
   font-family: Arial, serif;
@@ -31,7 +38,41 @@ body #root {
 .form {
   display: grid;
   justify-items: start;
-  grid-gap: 7px;
+  grid-gap: 10px;
+  font-size: 20px;
+}
+.form .form__header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 15px;
+}
+.form .form__header * {
+  margin: 0;
+}
+.form .form__body {
+  display: grid;
+  grid-gap: 10px;
+}
+.form .form__body .form__input,
+.form .form__body .form__textarea {
+  padding: 5px 10px;
+  width: 500px;
+  border-radius: 5px;
+  border: 1px solid #7C7676;
+}
+.form .form__body .row__input {
+  display: flex;
+}
+.form .form__body .form__textarea {
+  resize: none;
+}
+.form .form__input_submit {
+  cursor: pointer;
+  background: #A4C7AC;
+  padding: 8px 50px;
+  border: none;
+  border-radius: 50px;
 }
 
 .header {
@@ -40,8 +81,8 @@ body #root {
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  background-color: white;
   width: 250px;
+  background: #D9D9D9;
 }
 .header.header_user {
   background-color: #353434;
@@ -72,27 +113,28 @@ body #root {
   width: 100%;
 }
 .header .header__nav .menu__link.active {
-  background: #D9D9D9;
+  background: white;
 }
 
-.main, .aboutUs {
+.main, .mainTitle {
   margin-left: 250px;
 }
 
-.aboutUs {
+.mainTitle {
   background: url("../images/background.png") no-repeat;
-  background-size: 100% 100%;
+  background-size: 100% auto;
+  background-position-y: -100px;
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: end;
   padding: 55px 90px;
 }
-.aboutUs .aboutUs__title {
+.mainTitle .mainTitle__title {
   font-size: 50px;
   font-weight: 400;
 }
-.aboutUs .aboutUs__actions {
+.mainTitle .mainTitle__actions {
   display: flex;
   width: fit-content;
   justify-content: space-between;
@@ -101,16 +143,39 @@ body #root {
   padding: 12px 30px;
   font-size: 20px;
 }
-.aboutUs .aboutUs__actions .actions__separator {
+.mainTitle .mainTitle__actions .actions__separator {
   margin: 0 7px;
 }
 
 .main {
   padding: 20px 60px;
 }
+.main .support .request .request__status.request__status_pending {
+  color: coral;
+}
+.main .support .request .request__status.request__status_ongoing {
+  color: blue;
+}
+.main .support .request .request__status.request__status_resolved {
+  color: green;
+}
 .main .orders {
   display: grid;
   grid-gap: 12px;
+}
+.main .orders .orders__header {
+  display: grid;
+}
+.main .orders .orders__header .header__title {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+.main .orders .orders__header .orders__sort {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
 }
 .main .orders .order {
   padding: 16px;
@@ -123,11 +188,19 @@ body #root {
   gap: 10px;
 }
 .main .orders .order .row__item {
-  height: 40px;
+  padding: 10px 0;
   margin: 0;
 }
 .main .orders .order .row__item_choose {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   grid-row: span 2;
+  border: 2px solid #A78383;
+}
+.main .orders .order .row__item_choose:hover {
+  background-color: #A78383;
+  color: white;
 }
 .main .orders .order .order__rate {
   position: absolute;
@@ -141,22 +214,56 @@ body #root {
   width: 500px;
   border: 1px solid #7C7676;
 }
-.main .orders .order .order__rate .rate__header {
-  display: flex;
-  justify-content: space-between;
-}
 .main .orders .order .order__rate .rate__header .rate__close {
   color: red;
   font-weight: 200;
   cursor: pointer;
 }
 .main .orders .order .order__rate .rate__body {
-  display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
 }
 .main .orders .order .order__rate .rate__body .row__input {
   display: flex;
+}
+.main .orders .order .order__rate .rate__body .row__label {
+  margin: 10px 0;
+}
+.main .general .general__tagline {
+  font-weight: 200;
+  font-size: 30px;
+}
+.main .general .general__features {
+  margin-top: 70px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.main .general .general__features .feature {
+  width: 260px;
+}
+.main .general .general__features .feature .feature__title {
+  margin-bottom: 120px;
+}
+.main .general .general__feedbacks {
+  display: grid;
+  grid-gap: 13px;
+  width: 70%;
+}
+.main .general .general__feedbacks .feedback {
+  font-size: 22px;
+}
+.main .general .general__feedbacks .feedback .feedback__footer {
+  display: flex;
+  justify-content: space-between;
+}
+.main .general .general__feedbackForm {
+  display: grid;
+  grid-gap: 10px;
+}
+.main .general .general__feedbackForm .form__body {
+  display: grid;
+  grid-gap: 10px;
 }
 .main .auth {
   display: flex;
@@ -165,6 +272,54 @@ body #root {
 .main .auth .form {
   display: grid;
   grid-gap: 12px;
+}
+.main .orderDetail .orderDetail__header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+.main .orderDetail .orderDetail__header .header__route {
+  display: flex;
+}
+.main .orderDetail .orderDetail__header .header__route .orderDetail__separator {
+  margin: 0 7px;
+}
+.main .orderDetail .orderDetail__body .order {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.main .orderDetail .orderDetail__body .order .order__column {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.main .orderDetail .orderDetail__body .order .order__column .column__points {
+  display: flex;
+  align-items: center;
+}
+.main .orderDetail .orderDetail__body .order .order__column .column__points .point {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  background-color: #D07070;
+}
+.main .orderDetail .orderDetail__body .order .order__column .column__points .point.point_b {
+  background-color: #A4C7AC;
+}
+.main .orderDetail .orderDetail__body .order .order__column .column__points .point__place {
+  margin-left: 17px;
+}
+.main .orderDetail .orderDetail__body .order .order__column .column__arrow {
+  margin-left: 14px;
+  width: 12px;
+}
+.main .orderDetail .orderDetail__body .order .order__column:last-child {
+  justify-self: end;
 }
 
 /*# sourceMappingURL=index.css.map */

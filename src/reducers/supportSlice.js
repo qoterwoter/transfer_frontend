@@ -8,13 +8,6 @@ export const fetchRequests = createAsyncThunk('support/fetchRequests', async () 
     return response.data
 })
 
-
-const options = {
-    loading: 'Sending request...',
-    success: (data) => `Request sent successfully! ID: ${data.id}`,
-    error: (error) => `Failed to send request: ${error.message}`,
-};
-
 export const makeRequest = createAsyncThunk('support/makeRequest', async (data) => {
     try {
         const response = await axios.post(`${API_URL}/supports/`, data, headers);

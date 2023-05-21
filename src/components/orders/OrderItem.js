@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import OrderRate from "./OrderRate";
+import Rate from "./Rate";
 import {NavLink, useLocation} from "react-router-dom";
 
 function OrderItem(props) {
@@ -41,9 +41,9 @@ function OrderItem(props) {
             <p className="row__item">Куда</p>
             {end ?
                 <a className='row__item row__item_choose link' onClick={openRate}>Оценить</a> :
-                <NavLink className='row__item row__item_choose link' to={""}>Выбрать</NavLink>}
+                <NavLink className='row__item row__item_choose link' to={`${props.orderId}`}>Выбрать</NavLink>}
             {row}
-            {isShow && <OrderRate orderId={props.orderId} refer={ref} closeRate={closeRate}/>}
+            {isShow && <Rate orderId={props.orderId} refer={ref} closeRate={closeRate}/>}
         </article>
     );
 }
