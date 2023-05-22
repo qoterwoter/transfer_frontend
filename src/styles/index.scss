@@ -57,7 +57,7 @@ body {
         padding: 8px 50px;
         border: none;
         border-radius: 50px;
-        width: 180px;
+        min-width: 180px;
     }
     .form__input_submit {
         background: $green;
@@ -67,12 +67,17 @@ body {
     }
     &.form_row {
         display: flex;
+        align-items: center;
+        justify-content: space-between;
         .form__body {
             display: flex;
             align-items: center;
             .form__input {
                 width: fit-content;
             }
+        }
+        .row__about {
+            margin: 0;
         }
         .form__input_submit,
         .form__input_edit {
@@ -441,6 +446,57 @@ body {
                 justify-items: start;
                 .row__about {
                     margin: 0;
+                }
+            }
+        }
+    }
+    .car {
+        .car__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .car__body {
+            display: grid;
+            grid-gap: 20px;
+        }
+    }
+    .requests {
+        .requests__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .requests__body {
+            >* {
+                border: $border;
+                display: grid;
+                grid-gap: 10px;
+                grid-template-columns: repeat(5, 1fr);
+                align-items: center;
+                padding: 15px;
+                * {
+                    margin: 0;
+                }
+            }
+            .requests__head {
+                margin-bottom: 25px;
+            }
+            .request {
+                margin-bottom: 10px;
+            }
+            .request__item {
+                &:nth-child(4) {
+                    display: flex;
+                    justify-content: space-between;
+                    width: 130px;
+                    .item__passenger {
+                        display: flex;
+                        align-items: center;
+                        .passenger__image {
+                            width: 30px;
+                        }
+                    }
                 }
             }
         }

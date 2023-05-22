@@ -73,7 +73,7 @@ body #root {
   padding: 8px 50px;
   border: none;
   border-radius: 50px;
-  width: 180px;
+  min-width: 180px;
 }
 .form .form__input_submit {
   background: #A4C7AC;
@@ -83,6 +83,8 @@ body #root {
 }
 .form.form_row {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .form.form_row .form__body {
   display: flex;
@@ -90,6 +92,9 @@ body #root {
 }
 .form.form_row .form__body .form__input {
   width: fit-content;
+}
+.form.form_row .row__about {
+  margin: 0;
 }
 .form.form_row .form__input_submit,
 .form.form_row .form__input_edit {
@@ -441,6 +446,49 @@ body #root {
 }
 .main .userProfile .userProfile__body .userProfile__row .row__about {
   margin: 0;
+}
+.main .car .car__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main .car .car__body {
+  display: grid;
+  grid-gap: 20px;
+}
+.main .requests .requests__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main .requests .requests__body > * {
+  border: 1px solid #7C7676;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+  padding: 15px;
+}
+.main .requests .requests__body > * * {
+  margin: 0;
+}
+.main .requests .requests__body .requests__head {
+  margin-bottom: 25px;
+}
+.main .requests .requests__body .request {
+  margin-bottom: 10px;
+}
+.main .requests .requests__body .request__item:nth-child(4) {
+  display: flex;
+  justify-content: space-between;
+  width: 130px;
+}
+.main .requests .requests__body .request__item:nth-child(4) .item__passenger {
+  display: flex;
+  align-items: center;
+}
+.main .requests .requests__body .request__item:nth-child(4) .item__passenger .passenger__image {
+  width: 30px;
 }
 
 /*# sourceMappingURL=index.css.map */

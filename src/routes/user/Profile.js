@@ -42,6 +42,13 @@ function Profile(props) {
                     placeholder={'ivan@ivanov.ru'}
                     type={'email'}
                 />
+                <ProfileInput
+                    id={'phoneNumber'}
+                    value={user.phoneNumber}
+                    label={'Номер телефона'}
+                    placeholder={'+7 (999) 999 99 99'}
+                    type={'phoneNumber'}
+                />
             </div>
         </div>
     </main>

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {authUser} from "../../reducers/userSlice";
 import {NavLink, useNavigate} from "react-router-dom";
@@ -26,6 +26,12 @@ function Authorization(props) {
             window.location.reload();
         }
     }
+
+    useEffect(() => {
+        if (user.status==='Авторизован') {
+            navigate('/')
+        }
+    }, [user])
 
     return (
         <main className="main">

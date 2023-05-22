@@ -39,7 +39,7 @@ function OrderDetail(props) {
                         <p className={'orderDetail__separator'}>/</p>
                         <NavLink className={'link'} to={`/user/upcomingOrders/${id}`}>Заявка №{id}</NavLink>
                     </div>
-                    {userTag(user.username)}
+                    {userTag(user)}
                 </div>
                 <div className="orderDetail__body">
                     <h3 className="order__datetime">Рейс №{order?.order_id}. {beautyTime(order?.departure_time,'time')}</h3>

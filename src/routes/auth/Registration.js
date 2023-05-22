@@ -1,42 +1,65 @@
-import React, {useState} from 'react';
-import {useDispatch} from "react-redux";
+import React, {useEffect, useState} from 'react';
+import {useDispatch, useSelector} from "react-redux";
 import {registerUser} from "../../reducers/userSlice";
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import toast from "react-hot-toast";
+import {IMaskInput} from "react-imask";
+
+export function validatePhoneNumber(phoneNumber) {
+    const regex = /^\+{1}[7]{1}\s{1}\(\d{3}\)\s{1}\d{3}\s{1}\d{2}\s{1}\d{2}$/;
+    return regex.test(phoneNumber);
+}
+
+export const phoneMask = "+{7} (000) 000 00 00";
 
 function Registration(props) {
-    const [username,setUsername] = useState('')
-    const [password,setPassword] = useState('')
-    const [password2,setPassword2] = useState('')
-    const [email, setEmail] = useState('')
-    const [firstName, setFirstName] = useState('')
-    const [lastName, setLastName] = useState('')
+    const [username,setUsername] = useState('valerie')
+    const [password,setPassword] = useState('zxcqwe12easzcaaz')
+    const [password2,setPassword2] = useState('zxcqwe12easzcaaz')
+    const [email, setEmail] = useState('marderics@gmail.com')
+    const [firstName, setFirstName] = useState('Валерия')
+    const [lastName, setLastName] = useState('Гучустян')
+    const [phoneNumber, setPhoneNumber] = useState('+7 (926) 848 95 65')
 
     const onChangeUsername = e => setUsername(e.target.value)
+    const onChangePhone = e => setPhoneNumber(e.target.value)
     const onChangePassword = e => setPassword(e.target.value)
     const onChangePassword2 = e => setPassword2(e.target.value)
     const onChangeEmail = e => setEmail(e.target.value)
     const onChangeFirstName = e => setFirstName(e.target.value)
     const onChangeLastName = e => setLastName(e.target.value)
 
-    const dispatch = useDispatch()
+    const user = useSelector(state => state.user)
 
-    const register = (e) => {
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    const register = async (e) => {
         e.preventDefault()
         if (password !== password2) {
             toast.error('Пароли не совпадают')
             return
         }
-        toast.promise(dispatch(registerUser({firstName, lastName, username, password, email})),
-            {loading: 'Загрузка', success: 'Успешно', error: 'Ошибка'})
+        const data = {firstName, lastName, username, password, email, phoneNumber, is_staff: 'False'}
+        if (props.type==='driver') {data.is_staff='True'}
+
+        console.log(data)
+        await dispatch(registerUser(data, {navigate}))
+        window.location.reload();
     }
+
+    useEffect(() => {
+        if(user.status === 'Авторизован') {
+            navigate('/')
+        }
+    },[user])
 
     return (
         <main className="main">
             <div className={'register'}>
                 <form className='registerForm form' onSubmit={register}>
                     <div className="form__header">
-                        <h2 className="header__title">Регистрация</h2>
+                        <h2 className="header__title">{props.title}</h2>
                     </div>
                     <div className="form__body">
                         <label className='form__label' htmlFor='firstName'>Введите имя:</label>
@@ -57,12 +80,23 @@ function Registration(props) {
                             onChange={onChangeLastName}
                             value={lastName}
                         />
+                        <label className='form__label' htmlFor='phoneNumber'>Введите номер телефона:</label>
+                        <IMaskInput
+                            className='form__input'
+                            id='phoneNumber'
+                            type='phoneNumber'
+                            placeholder='Иванов'
+                            onChange={onChangePhone}
+                            value={phoneNumber}
+                            mask={phoneMask}
+                            onAccept={(value, mask) => console.log(value, mask)}
+                        />
                         <label className='form__label' htmlFor='login'>Введите логин:</label>
                         <input
                             className='form__input'
                             id='login'
                             type='text'
-                            placeholder='ivan_zxc'
+                            placeholder='ivan'
                             onChange={onChangeUsername}
                             value={username}
                         />

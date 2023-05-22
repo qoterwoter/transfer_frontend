@@ -15,7 +15,7 @@ const MainTitle = () => {
         {user.status === 'Не авторизован' && <div className={'mainTitle__actions actions'}>
             <NavLink className={'link'} to={'auth'}>Вход</NavLink>
             <p className={'actions__separator'}>/</p>
-            <NavLink className={'link'} to={'register'}>Регистрация</NavLink>
+            <NavLink className={'link'} to={'/registerUser'}>Регистрация</NavLink>
         </div>}
         {user.status === 'Авторизован' && <>
             {userTag(user)}

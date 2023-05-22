@@ -13,6 +13,10 @@ import MyOrders from "./routes/user/MyOrders";
 import Support from "./routes/user/Support";
 import OrderDetail from "./components/orders/OrderDetail";
 import Profile from "./routes/user/Profile";
+import RegisterDriver from "./routes/driver/RegisterDriver";
+import ProfileDriver from "./routes/driver/ProfileDriver";
+import Car from "./routes/driver/Car";
+import OrderRequests from "./routes/driver/OrderRequests";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -20,7 +24,8 @@ const router = createBrowserRouter(
         <Route path={'/'} element={<App/>}>
             <Route index element={<Main/>}/>
             <Route path={'auth'} element={<Authorization/>}/>
-            <Route path={'register'} element={<Registration/>}/>
+            <Route path={'registerUser'} element={<Registration title={'Регистрация'}/>}/>
+            <Route path={'registerDriver'} element={<RegisterDriver/>}/>
         </Route>
         <Route path={'/user'} element={<App/>}>
             <Route path={'create'} element={<MakeOrder/>}/>
@@ -29,6 +34,12 @@ const router = createBrowserRouter(
             <Route path={'support'} element={<Support/>}/>
             <Route path={'upcomingOrders/:id'} element={<OrderDetail/>}/>
             <Route path={'profile'} element={<Profile/>} />
+        </Route>
+        <Route path={'/driver'} element={<App/>}>
+            <Route path={'profile'} element={<ProfileDriver/>}/>
+            <Route path={'support'} element={<Support/>}/>
+            <Route path={'car'} element={<Car/>}/>
+            <Route path={'requests'} element={<OrderRequests/>}/>
         </Route>
     </>
     )

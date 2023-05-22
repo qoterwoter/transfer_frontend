@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import {useDispatch} from "react-redux";
 import {updateUser} from "../../reducers/userSlice";
 import toast from "react-hot-toast";
+import {IMaskInput} from "react-imask/dist/react-imask";
+import {phoneMask} from "../../routes/auth/Registration";
 
 export function validateEmail(email) {
     const pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
@@ -18,7 +20,7 @@ function ProfileInput(props) {
 
     const dispatch = useDispatch()
 
-    const save = e => {
+    const save = async e => {
         e.preventDefault()
 
         if (value.length < 4) {
@@ -29,11 +31,17 @@ function ProfileInput(props) {
             toast.error('Введите корректную почту!')
             return
         }
+
+        if (props.id==='phoneNumber' && value.length < 18) {
+            toast.error('Введите корректный номер телефона!')
+            return
+        }
+
         const data = {
             [props.id]: `${value}`
         }
 
-        dispatch(updateUser(data))
+        await dispatch(updateUser(data))
         toggleEdit()
     }
 
@@ -42,8 +50,25 @@ function ProfileInput(props) {
         {isEdit ?
         <form className={'userProfile__row userProfile__row_input form form_row'} onSubmit={save}>
             <div className="form__body">
-                <label className={'form__label'} htmlFor={props.id}>{props.label}</label>
-                <input className={'form__input'} type={props.type} id={props.id} value={value} onChange={onChange}/>
+                <label className={'form__label'} htmlFor={props.id}>{props.label}:</label>
+                {props.id!=='phoneNumber' ?
+                    <input
+                        className={'form__input'}
+                        placeholder={props.placeholder}
+                        type={props.type} id={props.id}
+                        value={value}
+                        onChange={onChange}
+                    /> :
+                    <IMaskInput
+                        className='form__input'
+                        placeholder={props.placeholder}
+                        type={props.type} id={props.id}
+                        value={value}
+                        onChange={onChange}
+                        mask={phoneMask}
+                        onAccept={(value, mask) => console.log(value, mask)}
+                    />
+                }
             </div>
             <div className="form__footer">
                 <input className={'form__input form__input_submit'} type={'submit'}/>
