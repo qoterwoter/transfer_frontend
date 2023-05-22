@@ -20,6 +20,7 @@ function Rate(props) {
             driver_rating: driver,
             transport_rating: transport,
         }
+
         await dispatch(setRate(data))
         props.closeRate()
     }

@@ -67,12 +67,47 @@ body #root {
 .form .form__body .form__textarea {
   resize: none;
 }
-.form .form__input_submit {
+.form .form__input_submit,
+.form .form__input_edit {
   cursor: pointer;
-  background: #A4C7AC;
   padding: 8px 50px;
   border: none;
   border-radius: 50px;
+  width: 180px;
+}
+.form .form__input_submit {
+  background: #A4C7AC;
+}
+.form .form__input_edit {
+  background: coral;
+}
+.form.form_row {
+  display: flex;
+}
+.form.form_row .form__body {
+  display: flex;
+  align-items: center;
+}
+.form.form_row .form__body .form__input {
+  width: fit-content;
+}
+.form.form_row .form__input_submit,
+.form.form_row .form__input_edit {
+  transition: 0.2s;
+}
+.form.form_row .form__input_submit {
+  background: none;
+  border: 2px solid #A4C7AC;
+}
+.form.form_row .form__input_submit:hover {
+  background: #A4C7AC;
+}
+.form.form_row .form__input_edit {
+  background: none;
+  border: 2px solid coral;
+}
+.form.form_row .form__input_edit:hover {
+  background: coral;
 }
 
 .header {
@@ -388,6 +423,24 @@ body #root {
 }
 .main .orderDetail .orderDetail__body .orderDetail__noResponses .column:last-child {
   justify-content: space-evenly;
+}
+.main .userProfile .userProfile__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.main .userProfile .userProfile__body {
+  display: grid;
+  grid-gap: 20px;
+}
+.main .userProfile .userProfile__body .userProfile__row {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  align-items: center;
+  justify-items: start;
+}
+.main .userProfile .userProfile__body .userProfile__row .row__about {
+  margin: 0;
 }
 
 /*# sourceMappingURL=index.css.map */

@@ -25,7 +25,6 @@ const Main = () => {
                 ' которую вам предложил водитель. На заявку может откликаться сразу' +
                 ' несколько водителей, потому вы сможете выбрать самое выгодное предложение.'
         },
-
     ]
 
     return (
@@ -37,7 +36,7 @@ const Main = () => {
                     {features.map((feature, id) => <Features feature={feature} key={`feature${id}`}/>)}
                 </div>
                 <Feedbacks/>
-                {user.status==='Авторизован' &&<FeedbackForm/>}
+                {user.status==='Авторизован' && <FeedbackForm/>}
             </div>
         </main>
     </>
