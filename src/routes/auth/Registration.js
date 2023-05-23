@@ -45,11 +45,11 @@ function Registration(props) {
 
         console.log(data)
         await dispatch(registerUser(data, {navigate}))
-        window.location.reload();
     }
 
     useEffect(() => {
         if(user.status === 'Авторизован') {
+            window.location.reload();
             navigate('/')
         }
     },[user])

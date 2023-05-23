@@ -51,7 +51,7 @@ function Authorization(props) {
                 </div>
             </form>
             <p className="form__help">
-                Нет аккаунта ? <NavLink className={'link'} to={"/register"}>Регистрация</NavLink>
+                Нет аккаунта ? <NavLink className={'link'} to={"/registerUser"}>Регистрация</NavLink>
             </p>
             <p className="auth__status">Статус: {user.status}</p>
         </div>

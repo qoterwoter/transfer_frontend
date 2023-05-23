@@ -28,7 +28,7 @@ function Request(props) {
         e.preventDefault()
 
         const data = {
-            id: request.response.id,
+            id: request.response?.id,
             price
         }
         await dispatch(updateRequest(data))

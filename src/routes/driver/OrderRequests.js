@@ -20,10 +20,10 @@ function OrderRequests(props) {
 
     useEffect(() => {
         if(endsWith) {
-            const filtered = requests.filter(request => request.response.status==='n')
+            const filtered = requests.filter(request => request.response?.status==='n')
             setData([...filtered])
         } else {
-            const filtered = requests.filter(request => request.response.status==='a')
+            const filtered = requests.filter(request => request.response?.status==='a')
             setData([...filtered])
         }
     }, [location, requests])
