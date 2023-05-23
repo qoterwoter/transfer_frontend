@@ -17,6 +17,7 @@ import RegisterDriver from "./routes/driver/RegisterDriver";
 import ProfileDriver from "./routes/driver/ProfileDriver";
 import Car from "./routes/driver/Car";
 import OrderRequests from "./routes/driver/OrderRequests";
+import Orders from "./routes/driver/Orders";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -40,6 +41,7 @@ const router = createBrowserRouter(
             <Route path={'support'} element={<Support/>}/>
             <Route path={'car'} element={<Car/>}/>
             <Route path={'requests'} element={<OrderRequests/>}/>
+            <Route path={'orders'} element={<Orders/>}/>
         </Route>
     </>
     )

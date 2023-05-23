@@ -23,6 +23,31 @@
   font-size: 20px;
 }
 
+.button {
+  padding: 5px 10px;
+  border-radius: 7px;
+  border: 1px solid #7C7676;
+  background: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.button.button_edit {
+  background: none;
+  border: 2px solid coral;
+}
+.button.button_edit:hover {
+  color: white;
+  background: coral;
+}
+.button.button_submit {
+  background: none;
+  border: 2px solid #A4C7AC;
+}
+.button.button_submit:hover {
+  color: white;
+  background: #A4C7AC;
+}
+
 body {
   margin: 0;
   font-family: Arial, serif;
@@ -39,7 +64,6 @@ body #root {
   display: grid;
   justify-items: start;
   grid-gap: 10px;
-  font-size: 20px;
 }
 .form .form__header {
   display: flex;
@@ -72,7 +96,7 @@ body #root {
   cursor: pointer;
   padding: 8px 50px;
   border: none;
-  border-radius: 50px;
+  border-radius: 10px;
   min-width: 180px;
 }
 .form .form__input_submit {
@@ -86,9 +110,15 @@ body #root {
   align-items: center;
   justify-content: space-between;
 }
+.form.form_row .form__header {
+  grid-gap: 10px;
+  width: 50%;
+}
 .form.form_row .form__body {
   display: flex;
   align-items: center;
+  width: 50%;
+  justify-content: space-between;
 }
 .form.form_row .form__body .form__input {
   width: fit-content;
@@ -97,7 +127,8 @@ body #root {
   margin: 0;
 }
 .form.form_row .form__input_submit,
-.form.form_row .form__input_edit {
+.form.form_row .form__input_edit,
+.form.form_row .from__input_cancel {
   transition: 0.2s;
 }
 .form.form_row .form__input_submit {
@@ -106,6 +137,14 @@ body #root {
 }
 .form.form_row .form__input_submit:hover {
   background: #A4C7AC;
+}
+.form.form_row .from__input_cancel {
+  border: 2px solid #D07070;
+  background: none;
+  cursor: pointer;
+}
+.form.form_row .from__input_cancel:hover {
+  background: #D07070;
 }
 .form.form_row .form__input_edit {
   background: none;
@@ -398,7 +437,7 @@ body #root {
 .main .orderDetail .orderDetail__body .orderDetail__noResponses {
   margin-top: 50px;
   display: flex;
-  border: 2px solid gray;
+  border: 1px solid #7C7676;
   border-radius: 10px;
   width: 100%;
   padding: 35px;
@@ -452,20 +491,36 @@ body #root {
   justify-content: space-between;
   align-items: center;
 }
-.main .car .car__body {
-  display: grid;
-  grid-gap: 20px;
+.main .car .car__body .car__row {
+  border-bottom: 1px solid #7C7676;
+  padding: 20px 0;
+  display: block;
+}
+.main .car .car__body .car__row .row__header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.main .car .car__body .car__row .row__header * {
+  margin: 0;
+}
+.main .car .car__body .car__row .row__image {
+  display: block;
+  width: 200px;
 }
 .main .requests .requests__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+.main .requests .requests__body.request__order * {
+  grid-template-columns: repeat(5, 2fr);
+}
 .main .requests .requests__body > * {
   border: 1px solid #7C7676;
   display: grid;
   grid-gap: 10px;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 2fr) 3fr;
   align-items: center;
   padding: 15px;
 }
@@ -478,17 +533,28 @@ body #root {
 .main .requests .requests__body .request {
   margin-bottom: 10px;
 }
-.main .requests .requests__body .request__item:nth-child(4) {
+.main .requests .requests__body .request .request__item:nth-child(4) {
   display: flex;
   justify-content: space-between;
   width: 130px;
 }
-.main .requests .requests__body .request__item:nth-child(4) .item__passenger {
+.main .requests .requests__body .request .request__item:nth-child(4) .item__passenger {
   display: flex;
   align-items: center;
 }
-.main .requests .requests__body .request__item:nth-child(4) .item__passenger .passenger__image {
+.main .requests .requests__body .request .request__item:nth-child(4) .item__passenger .passenger__image {
   width: 30px;
+}
+.main .requests .requests__body .request .item__response {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+}
+.main .requests .requests__body .request .item__response .response__form .form__input {
+  width: 80px;
+}
+.main .requests .requests__body .request .item__response .response__form .form__input.form__input_duration {
+  width: 40px;
 }
 
 /*# sourceMappingURL=index.css.map */

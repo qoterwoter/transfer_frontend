@@ -10,9 +10,10 @@ export const fetchCar = createAsyncThunk('car/fetchCar', async () => {
     return response.data
 })
 
-export const updateCar = createAsyncThunk('car/updateCar', async data => {
-    console.log(data)
-    const response = await axios.put(`${API_URL}/car/${data.id}/`, data, headers)
+export const updateCar = createAsyncThunk('car/updateCar', async ({image, id}) => {
+    console.log(image, id)
+    const response = await axios.put(`${API_URL}/car/${id}/`, image, headers)
+    console.log(response)
     return response.data
 })
 
@@ -37,7 +38,8 @@ const carSlice = createSlice({
         },
         [updateCar.fulfilled]: (state, action) => {
             toast.success('Данные обновлены')
-            return {...action.payload}
+            const data = {...state,...action.payload}
+            return data
         },
         [driverInfo.fulfilled]: (state, action) => {
             const data = {...action.payload.data};

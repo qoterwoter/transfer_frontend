@@ -20,6 +20,21 @@ export const makeOrder = createAsyncThunk('orders/makeOrder', async (data) => {
     return response.data
 })
 
+export const chooseRequestFromDriver = createAsyncThunk('orders/chooseRequestFromDriver', async data => {
+    const response = await axios.post(`${API_URL}/choose-driver/`, data, headers)
+    return response
+})
+
+export const updateRequest = createAsyncThunk('ordere/updateRequest', async ({id, price}) => {
+    const response = await axios.put(`${API_URL}/update-response/${id}/`, {price}, headers)
+    return response
+})
+
+export const chooseRequestFromClient = createAsyncThunk('orders/chooseRequestFromClient', async ({id, status}) => {
+    const response = await axios.put(`${API_URL}/choose-request/${id}/`, {status}, headers)
+    return response
+})
+
 export const setRate = createAsyncThunk('orders/setRate', async (data) => {
     try {
         const response = await axios.post(`${API_URL}/order-rating/${data.order}/`, data, headers)
@@ -57,6 +72,15 @@ const ordersSlice = createSlice({
         },
         [orderDetail.fulfilled]: (state, action) => {
             state.currentOrder = action.payload
+        },
+        [chooseRequestFromDriver.fulfilled]: (state, action) => {
+            toast.success('Предложение отправлено!')
+        },
+        [updateRequest.fulfilled]: state => {
+            toast.success('Предложение обновлено!')
+        },
+        [chooseRequestFromClient.fulfilled]: state => {
+            toast.success("Водитель выбран!")
         }
     }
 })

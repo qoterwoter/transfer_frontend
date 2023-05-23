@@ -34,29 +34,27 @@ function Authorization(props) {
     }, [user])
 
     return (
-        <main className="main">
-            <div className={'auth'}>
-                <form className="auth__form form" onSubmit={auth}>
-                    <div className="form__header">
-                        <h2 className="auth__title">Вход</h2>
-                    </div>
-                    <div className="form__body">
-                        <label className={'form__label'} htmlFor={'username'}>Логин</label>
-                        <input className="form__input" type="text" value={username} onChange={onChangeUsername}/>
+        <div className={'auth'}>
+            <form className="auth__form form" onSubmit={auth}>
+                <div className="form__header">
+                    <h2 className="auth__title">Вход</h2>
+                </div>
+                <div className="form__body">
+                    <label className={'form__label'} htmlFor={'username'}>Логин</label>
+                    <input className="form__input" type="text" value={username} onChange={onChangeUsername}/>
 
-                        <label className={'form__label'} htmlFor={'login'}>Пароль</label>
-                        <input className="form__input" type="password" value={password} onChange={onChangePassword}/>
-                    </div>
-                    <div className="form__footer">
-                        <input className="form__input form__input_submit" type="submit" value={'Войти'}/>
-                    </div>
-                </form>
-                <p className="form__help">
-                    Нет аккаунта ? <NavLink className={'link'} to={"/register"}>Регистрация</NavLink>
-                </p>
-                <p className="auth__status">Статус: {user.status}</p>
-            </div>
-        </main>
+                    <label className={'form__label'} htmlFor={'login'}>Пароль</label>
+                    <input className="form__input" type="password" value={password} onChange={onChangePassword}/>
+                </div>
+                <div className="form__footer">
+                    <input className="form__input form__input_submit" type="submit" value={'Войти'}/>
+                </div>
+            </form>
+            <p className="form__help">
+                Нет аккаунта ? <NavLink className={'link'} to={"/register"}>Регистрация</NavLink>
+            </p>
+            <p className="auth__status">Статус: {user.status}</p>
+        </div>
     );
 }
 

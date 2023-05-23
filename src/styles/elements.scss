@@ -22,3 +22,27 @@
     padding: 12px 30px;
     font-size: 20px;
 }
+
+.button {
+    padding: 5px 10px;
+    border-radius: 7px;
+    border: $border;
+    background: none;
+    cursor: pointer;
+    transition: .2s;
+    &.button_edit {
+        background: none;
+        border: 2px solid coral;
+        &:hover {
+            color: white;
+            background: coral;
+        }
+    }&.button_submit {
+         background: none;
+         border: 2px solid $green;
+         &:hover {
+             color: white;
+             background: $green;
+         }
+     }
+}

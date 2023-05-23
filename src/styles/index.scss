@@ -23,7 +23,6 @@ body {
     display: grid;
     justify-items: start;
     grid-gap: 10px;
-    font-size: 20px;
     .form__header {
         display: flex;
         justify-content: space-between;
@@ -56,7 +55,7 @@ body {
         cursor: pointer;
         padding: 8px 50px;
         border: none;
-        border-radius: 50px;
+        border-radius: 10px;
         min-width: 180px;
     }
     .form__input_submit {
@@ -69,9 +68,15 @@ body {
         display: flex;
         align-items: center;
         justify-content: space-between;
+        .form__header {
+            grid-gap: 10px;
+            width: 50%;
+        }
         .form__body {
             display: flex;
             align-items: center;
+            width: 50%;
+            justify-content: space-between;
             .form__input {
                 width: fit-content;
             }
@@ -80,7 +85,8 @@ body {
             margin: 0;
         }
         .form__input_submit,
-        .form__input_edit {
+        .form__input_edit,
+        .from__input_cancel {
             transition: .2s;
         }
         .form__input_submit {
@@ -88,6 +94,14 @@ body {
             border: 2px solid $green;
             &:hover {
                 background: $green;
+            }
+        }
+        .from__input_cancel {
+            border: 2px solid #D07070;
+            background: none;
+            cursor: pointer;
+            &:hover {
+                background: #D07070;
             }
         }
         .form__input_edit {
@@ -397,7 +411,7 @@ body {
             .orderDetail__noResponses {
                 margin-top: 50px;
                 display: flex;
-                border: 2px solid gray;
+                border: $border;
                 border-radius: 10px;
                 width: 100%;
                 padding: 35px;
@@ -457,8 +471,23 @@ body {
             align-items: center;
         }
         .car__body {
-            display: grid;
-            grid-gap: 20px;
+            .car__row {
+                border-bottom: $border;
+                padding: 20px 0;
+                display: block;
+                .row__header {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 10px;
+                    * {
+                        margin: 0;
+                    }
+                }
+                .row__image {
+                    display: block;
+                    width: 200px;
+                }
+            }
         }
     }
     .requests {
@@ -468,11 +497,14 @@ body {
             align-items: center;
         }
         .requests__body {
+            &.request__order * {
+                grid-template-columns: repeat(5, 2fr);
+            }
             >* {
                 border: $border;
                 display: grid;
                 grid-gap: 10px;
-                grid-template-columns: repeat(5, 1fr);
+                grid-template-columns: repeat(4, 2fr) 3fr;
                 align-items: center;
                 padding: 15px;
                 * {
@@ -484,17 +516,28 @@ body {
             }
             .request {
                 margin-bottom: 10px;
-            }
-            .request__item {
-                &:nth-child(4) {
-                    display: flex;
-                    justify-content: space-between;
-                    width: 130px;
-                    .item__passenger {
+                .request__item {
+                    &:nth-child(4) {
                         display: flex;
-                        align-items: center;
-                        .passenger__image {
-                            width: 30px;
+                        justify-content: space-between;
+                        width: 130px;
+                        .item__passenger {
+                            display: flex;
+                            align-items: center;
+                            .passenger__image {
+                                width: 30px;
+                            }
+                        }
+                    }
+                }
+                .item__response {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    align-items: center;
+                    .response__form .form__input {
+                        width: 80px;
+                        &.form__input_duration {
+                            width: 40px;
                         }
                     }
                 }

@@ -18,7 +18,7 @@ function UserMenu(props) {
         <>
             <NavLink className="menu__link link" to={'/'}>Главная</NavLink>
             <NavLink className="menu__link link" to={'requests'}>Заказы</NavLink>
-            <NavLink className="menu__link link" to={'/'}>Поездки</NavLink>
+            <NavLink className="menu__link link" to={'orders'}>Поездки</NavLink>
             <NavLink className="menu__link link" to={'profile'}>Мои данные</NavLink>
             <NavLink className="menu__link link" to={'car'}>Моё авто</NavLink>
             <NavLink className="menu__link link" to={'support'}>Техническая поддержка</NavLink>

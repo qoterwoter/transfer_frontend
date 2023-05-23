@@ -26,8 +26,12 @@ const Header = () => {
             <img className={'header__logo'} src={logo}/>
         </NavLink>
         <nav className={'header__nav'}>
-            {location.pathname.startsWith('/user') ? <UserMenu/> :
-            location.pathname.startsWith('/driver') ? <DriverMenu/> : <MainMenu/>}
+            {location.pathname.startsWith('/user') ?
+                <UserMenu/> :
+                location.pathname.startsWith('/driver') ?
+                    <DriverMenu/> :
+                    <MainMenu/>
+            }
         </nav>
     </header>
     )

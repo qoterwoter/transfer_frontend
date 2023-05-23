@@ -20,7 +20,13 @@ const App = () => {
     return (
     <>
         <Header/>
-        <Outlet/>
+        {location.pathname.endsWith('/') ? (
+            <Outlet/>
+            ) : (
+            <main className={'main'}>
+                <Outlet/>
+            </main>
+            )}
         <Toaster
             position="top-center"
         />

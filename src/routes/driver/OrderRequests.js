@@ -1,60 +1,56 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {userTag} from "../../components/MainTitle";
 import {fetchOrders} from "../../reducers/ordersSlice";
-import {beautyTime} from "../../components/orders/OrdersList";
 
-import adult from '../../images/adult.png'
-import children from '../../images/children.png'
+import Request from "./Request";
+import {useLocation} from "react-router-dom";
 
 function OrderRequests(props) {
     const user = useSelector(state => state.user)
     const requests = useSelector(state => state.orders.orders)
 
+    const [data, setData] = useState([...requests])
+
+    const location = useLocation()
+
     const dispatch = useDispatch()
 
+    const endsWith = location.pathname.endsWith('requests')
+
     useEffect(() => {
+        if(endsWith) {
+            const filtered = requests.filter(request => request.response.status==='n')
+            setData([...filtered])
+        } else {
+            const filtered = requests.filter(request => request.response.status==='a')
+            setData([...filtered])
+        }
+    }, [location, requests])
+
+    useEffect( () => {
         dispatch(fetchOrders())
     },[dispatch])
 
     return (
-    <main className="main">
-        <div className="requests">
-            <div className="requests__header">
-                <h2 className="requests__title">Заявки</h2>
-                {userTag(user)}
-            </div>
-            <div className="requests__body">
-                <div className="requests__head head">
-                    <p className="head__column">Дата поездки</p>
-                    <p className="head__column">Откуда</p>
-                    <p className="head__column">Куда</p>
-                    <p className="head__column">Пассажиры</p>
-                    <p className="head__column">Ваше предложение</p>
-                </div>
-                {requests.map(request=> (
-                <div className="requests__request request">
-                    <p className="request__item">{beautyTime(request.departure_time,'time')}</p>
-                    <p className="request__item">{request.from_location}</p>
-                    <p className="request__item">{request.to_location}</p>
-                    <div className="request__item item">
-                        <div className="item__passenger">
-                            <img className="passenger__image" src={adult}/>
-                            <p className="passenger__count">x {request.men_amount}</p>
-                        </div>
-                        <div className="item__passenger">
-                            <img className="passenger__image" src={children}/>
-                            <p className="passenger__count">x {request.children_amount}</p>
-                        </div>
-                    </div>
-                    <div className="request__item">
-
-                    </div>
-                </div>
-                ))}
-            </div>
+    <div className="requests">
+        <div className="requests__header">
+            <h2 className="requests__title">{endsWith ? 'Заявки' : "Поездки"}</h2>
+            {userTag(user)}
         </div>
-    </main>
+        <div className={"requests__body " + (!endsWith && 'request__order')}>
+            <div className={"requests__head head "}>
+                <p className="head__column">Дата поездки</p>
+                <p className="head__column">Откуда</p>
+                <p className="head__column">Куда</p>
+                <p className="head__column">Пассажиры</p>
+                <p className="head__column">{endsWith ? 'Ваше предложение' : "Стоимость"}</p>
+            </div>
+            {data.map(request=> (
+                <Request request={request} key={`request${request.id}`}/>
+            ))}
+        </div>
+    </div>
     );
 }
 

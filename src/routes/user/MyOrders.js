@@ -38,56 +38,54 @@ function MyOrders(props) {
     },[dispatch])
 
     return (
-    <main className="main">
-        <section className={'orders'}>
-            <div className="orders__header">
-                <div className="header__title">
-                    <h2 className="orders__title">{ends ? 'Предстоящие' : "Прошедшие"}</h2>
-                    {userTag(user)}
-                </div>
-                <form className="orders__sort">
-                    <h3 className="sort__title">Сортировать по</h3>
-                    <div className="sort__item">
-                        <input
-                            className={'sort__action'}
-                            type={'radio'}
-                            checked={sortBy === 'dateCreate'}
-                            value={'dateCreate'}
-                            name={'sort'}
-                            id={'dateCreate'}
-                            onClick={sortByCreate}
-                        />
-                        <label htmlFor={'dateCreate'}>Дата создания</label>
-                    </div>
-                    <div className="sort__item">
-                        <input
-                            className={'sort__action'}
-                            type={'radio'}
-                            value={'dateCreate'}
-                            name={'sort'}
-                            checked={sortBy === 'dateDeparture'}
-                            id={'dateDeparture'}
-                            onClick={sortByDeparture}
-                        />
-                        <label htmlFor={'dateDeparture'}>Дата поездки</label>
-                    </div>
-                </form>
+    <section className={'orders'}>
+        <div className="orders__header">
+            <div className="header__title">
+                <h2 className="orders__title">{ends ? 'Предстоящие' : "Прошедшие"}</h2>
+                {userTag(user)}
             </div>
-            {ends ? <>
-                <OrdersList orders={sortedOrders.filter(order => {
-                    const now = new Date().valueOf()
-                    const orderDate = new Date(order.departure_time).valueOf()
-                    return orderDate >= now
-                })}/>
-            </> : <>
-                <OrdersList orders={sortedOrders.filter(order => {
-                    const now = new Date()
-                    const orderDate = new Date(order.departure_time)
-                    return orderDate < now
-                })}/>
-            </>}
-        </section>
-    </main>
+            <form className="orders__sort">
+                <h3 className="sort__title">Сортировать по</h3>
+                <div className="sort__item">
+                    <input
+                        className={'sort__action'}
+                        type={'radio'}
+                        checked={sortBy === 'dateCreate'}
+                        value={'dateCreate'}
+                        name={'sort'}
+                        id={'dateCreate'}
+                        onClick={sortByCreate}
+                    />
+                    <label htmlFor={'dateCreate'}>Дата создания</label>
+                </div>
+                <div className="sort__item">
+                    <input
+                        className={'sort__action'}
+                        type={'radio'}
+                        value={'dateCreate'}
+                        name={'sort'}
+                        checked={sortBy === 'dateDeparture'}
+                        id={'dateDeparture'}
+                        onClick={sortByDeparture}
+                    />
+                    <label htmlFor={'dateDeparture'}>Дата поездки</label>
+                </div>
+            </form>
+        </div>
+        {ends ? <>
+            <OrdersList orders={sortedOrders.filter(order => {
+                const now = new Date().valueOf()
+                const orderDate = new Date(order.departure_time).valueOf()
+                return orderDate >= now
+            })}/>
+        </> : <>
+            <OrdersList orders={sortedOrders.filter(order => {
+                const now = new Date()
+                const orderDate = new Date(order.departure_time)
+                return orderDate < now
+            })}/>
+        </>}
+    </section>
     );
 }
 

@@ -14,14 +14,12 @@ function Support(props) {
     }, [dispatch])
 
     return (
-    <main className="main">
-        <div className="support">
-            <h2 className="support__title">Техническая поддержка</h2>
-            <MakeRequest/>
-            <h2 className="support__title">Мои запросы</h2>
-            <SupportList requests={support.requests}/>
-        </div>
-    </main>
+    <div className="support">
+        <h2 className="support__title">Техническая поддержка</h2>
+        <MakeRequest/>
+        <h2 className="support__title">Мои запросы</h2>
+        <SupportList requests={support.requests}/>
+    </div>
     );
 }
 
