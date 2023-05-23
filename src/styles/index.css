@@ -320,15 +320,20 @@ body #root {
   font-size: 30px;
 }
 .main .general .general__features {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  align-items: stretch;
+  height: max-content;
 }
 .main .general .general__features .feature {
+  display: grid;
+  grid-template-rows: 70px 130px auto;
+  justify-items: center;
   width: 260px;
 }
-.main .general .general__features .feature .feature__title {
-  margin-bottom: 120px;
+.main .general .general__features .feature .feature__image {
+  width: 130px;
 }
 .main .general .general__feedbacks {
   display: grid;

@@ -289,13 +289,20 @@ body {
             font-size: 30px;
         }
         .general__features {
-            display: flex;
-            width: 100%;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            justify-items: center;
+            align-items: stretch;
+            height: max-content;
             .feature {
+                display: grid;
+                grid-template-rows: 70px 130px auto;
+                justify-items: center;
                 width: 260px;
                 .feature__title {
-                    margin-bottom: 120px;
+                }
+                .feature__image {
+                    width: 130px;
                 }
             }
         }
