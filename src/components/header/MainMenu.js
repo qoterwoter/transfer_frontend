@@ -24,7 +24,7 @@ function MainMenu(props) {
         }
         <NavLink className="menu__link link" to={'registerDriver'}>Стать перевозчиком</NavLink>
         <a className="menu__link link" href={'#feedback'} >Отзывы</a>
-        <NavLink className="menu__link link" to={'/user/upcomingOrders'}>Вопросы и ответы</NavLink>
+        <NavLink className="menu__link link" to={'questions'}>Вопросы и ответы</NavLink>
         {user.status==='Авторизован' && <a href="src/components/header/Header" className="menu__link" onClick={handleLogout}>Выйти</a>}
     </>
     );

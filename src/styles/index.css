@@ -91,6 +91,11 @@ body #root {
 .form .form__body .form__textarea {
   resize: none;
 }
+.form .form__footer .form__userSuccess {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
 .form .form__input_submit,
 .form .form__input_edit {
   cursor: pointer;
@@ -560,6 +565,26 @@ body #root {
 }
 .main .requests .requests__body .request .item__response .response__form .form__input.form__input_duration {
   width: 40px;
+}
+.main .questions .question * {
+  transition: 0.3s;
+}
+.main .questions .question .question__title {
+  cursor: pointer;
+}
+.main .questions .question .question__description,
+.main .questions .question .question__list {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.8s ease-in-out;
+}
+.main .questions .question .description--show,
+.main .questions .question .list--show {
+  max-height: 1000px;
+}
+.main .questions .question .description--hide,
+.main .questions .question .list--hide {
+  max-height: 0;
 }
 
 /*# sourceMappingURL=index.css.map */

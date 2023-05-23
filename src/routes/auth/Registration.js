@@ -128,6 +128,14 @@ function Registration(props) {
                     />
                 </div>
                 <div className="form__footer">
+                    <div className="form__userSuccess">
+                        <input
+                            type={'checkbox'}
+                            id={'userSuccess'}
+                            required
+                        />
+                        <label className={'form__label'} htmlFor={'userSuccess'}>Я прочитал пользовательское соглашение</label>
+                    </div>
                     <input
                         className='form__input_submit form__input'
                         type='submit'

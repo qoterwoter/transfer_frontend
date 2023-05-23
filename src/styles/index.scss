@@ -50,6 +50,13 @@ body {
             resize: none;
         }
     }
+    .form__footer {
+        .form__userSuccess {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+    }
     .form__input_submit,
     .form__input_edit {
         cursor: pointer;
@@ -549,6 +556,33 @@ body {
                     }
                 }
             }
+        }
+    }
+    .questions {
+        .question {
+            * {
+                transition: .3s;
+            }
+            .question__title {
+                cursor: pointer;
+            }
+            .question__description,
+            .question__list {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height .8s ease-in-out;
+            }
+
+            .description--show,
+            .list--show {
+                max-height: 1000px;
+            }
+
+            .description--hide,
+            .list--hide {
+                max-height: 0;
+            }
+
         }
     }
 }
