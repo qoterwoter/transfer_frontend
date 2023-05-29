@@ -282,14 +282,21 @@ body #root {
   padding: 10px 0;
   margin: 0;
 }
-.main .orders .order .row__item_choose {
+.main .orders .order .row__item_choose,
+.main .orders .order .row__item_filled {
   display: flex;
   align-items: center;
   justify-content: center;
   grid-row: span 2;
+}
+.main .orders .order .row__item_choose {
   border: 2px solid #A78383;
 }
 .main .orders .order .row__item_choose:hover {
+  background-color: #A78383;
+  color: white;
+}
+.main .orders .order .row__item_filled {
   background-color: #A78383;
   color: white;
 }

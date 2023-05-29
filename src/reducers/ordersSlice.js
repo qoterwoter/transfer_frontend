@@ -8,6 +8,11 @@ export const fetchOrders = createAsyncThunk('orders/fetchOrders', async () => {
     return response.data
 })
 
+export const fetchRatings = createAsyncThunk('orders/fetchRatings', async () => {
+    const response = await axios.get(`${API_URL}/order-rating/`, headers)
+    return response.data
+})
+
 export const orderDetail = createAsyncThunk('orders/orderDetail', async (id) => {
     // const response = await axios.get(`${API_URL}/orders/${id}/`, headers)
     const response = await axios.get(`${API_URL}/orderDetail/${id}`, headers)
@@ -66,6 +71,9 @@ const ordersSlice = createSlice({
         [fetchOrders.rejected]: (state, action) => {
             console.log(action)
             state.status = 'Ошибка'
+        },
+        [fetchRatings.fulfilled]: (state, action) => {
+            state.ratings = action.payload
         },
         [makeOrder.fulfilled]: (state, action) => {
             state.orders = [...state.orders, action.payload]

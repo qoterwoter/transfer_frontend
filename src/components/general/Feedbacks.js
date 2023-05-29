@@ -31,7 +31,7 @@ function Feedbacks(props) {
     }, [dispatch])
 
     return (
-    <section className={'general__feedbacks feedbacks'} id={'feedback'}>
+    <section className={'general__feedbacks feedbacks'}>
         <h2 className="feedbacks__title">Отзывы</h2>
         {feedbacks.feedbacks.map(feedback => <Feedback feedback={feedback} key={`feedback${feedback.id}`}/>)}
     </section>

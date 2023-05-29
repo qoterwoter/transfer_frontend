@@ -1,12 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {fetchOrders} from "../../reducers/ordersSlice";
+import {fetchOrders, fetchRatings} from "../../reducers/ordersSlice";
 import OrdersList from "../../components/orders/OrdersList";
 import {useLocation} from "react-router-dom";
 import {userTag} from "../../components/MainTitle";
 
 function MyOrders(props) {
-    const orders = useSelector(state => state.orders?.orders)
+    const orders = useSelector(state => state.orders.orders)
+    const ratings = useSelector(state => state.orders.ratings)
+
     const user = useSelector(state => state.user)
 
     const [sortBy, setSortBy] = useState('dateCreate')
@@ -14,6 +16,14 @@ function MyOrders(props) {
 
     const dispatch = useDispatch()
     const location = useLocation()
+
+    const addRating = (order) => {
+        const rating = ratings.find(rating => rating.order === order.id)
+        if(rating) {
+            return {...order, rating}
+        } else
+            return order
+    }
 
     useEffect(() => {
         setSortedOrders([...orders])
@@ -33,9 +43,11 @@ function MyOrders(props) {
 
     const ends = location.pathname.endsWith('upcomingOrders')
 
-    useEffect(() => {
+    useEffect( () => {
         dispatch(fetchOrders())
+        dispatch(fetchRatings())
     },[dispatch])
+
 
     return (
     <section className={'orders'}>
@@ -77,13 +89,13 @@ function MyOrders(props) {
                 const now = new Date().valueOf()
                 const orderDate = new Date(order.departure_time).valueOf()
                 return orderDate >= now
-            })}/>
+            }).map(addRating)}/>
         </> : <>
             <OrdersList orders={sortedOrders.filter(order => {
                 const now = new Date()
                 const orderDate = new Date(order.departure_time)
                 return orderDate < now
-            })}/>
+            }).map(addRating)}/>
         </>}
     </section>
     );

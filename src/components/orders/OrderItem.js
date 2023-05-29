@@ -6,6 +6,8 @@ function OrderItem(props) {
     const row = props.row
     const [isShow, setIsShow] = useState(false)
 
+    const rating = props.rating
+
     const ref = useRef()
 
     const location = useLocation()
@@ -40,7 +42,11 @@ function OrderItem(props) {
             <p className="row__item">Откуда</p>
             <p className="row__item">Куда</p>
             {end ?
-                <a className='row__item row__item_choose link' onClick={openRate}>Оценить</a> :
+                !rating ? (
+                    <a className='row__item row__item_choose link' onClick={openRate}>Оценить</a>
+                    ) : (
+                    <p className={'row__item row__item_filled'}>Оценено</p>
+                ) :
                 <NavLink className='row__item row__item_choose link' to={`${props.orderId}`}>Выбрать</NavLink>}
             {row}
             {isShow && <Rate orderId={props.orderId} refer={ref} closeRate={closeRate}/>}

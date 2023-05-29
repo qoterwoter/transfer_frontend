@@ -24,7 +24,7 @@ function FeedbackForm(props) {
     }
 
     return (
-    <form action="" className="general__feedbackForm form" onSubmit={onSubmit}>
+    <form action="" className="general__feedbackForm form" id={'feedback'} onSubmit={onSubmit}>
         <div className="form__header">
             <h2 className="form__title">Оставить отзыв</h2>
         </div>

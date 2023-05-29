@@ -22,16 +22,18 @@ function OrdersList(props) {
 
     return (
     <>
-        {orders.map((order, id) => {
+    {orders.map((order, id) => {
 
-            const row = <>
+        console.log(order)
+        const row =
+            <>
                 <p className="row__item">{beautyTime(order.created_at)}</p>
                 <p className="row__item">{beautyTime(order.departure_time)}</p>
                 <p className="row__item">{order.from_location}</p>
                 <p className="row__item">{order.to_location}</p>
             </>
-        return <OrderItem orderId={order.id} className={'orders__order order'} key={`order${id}`} row={row}/>
-        })}
+        return <OrderItem rating={order.rating} orderId={order.id} className={'orders__order order'} key={`order${id}`} row={row}/>
+    })}
     </>
     );
 }

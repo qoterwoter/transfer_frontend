@@ -248,16 +248,23 @@ body {
                 padding: 10px 0;
                 margin: 0;
             }
-            .row__item_choose {
+            .row__item_choose,
+            .row__item_filled {
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 grid-row: span 2;
+            }
+            .row__item_choose {
                 border: 2px solid #A78383;
                 &:hover {
                     background-color: #A78383;
                     color: white;
                 }
+            }
+            .row__item_filled {
+                background-color: #A78383;
+                color: white;
             }
             .order__rate {
                 position: absolute;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useRef} from "react";
 import MainTitle from "../components/MainTitle";
 import Features from "../components/general/Features";
 import Feedbacks from "../components/general/Feedbacks";
@@ -10,6 +10,8 @@ import best from '../images/best.png'
 
 const Main = () => {
     const user = useSelector(state => state.user)
+
+    const feedbackRef = useRef(null);
 
     const features = [
         {
@@ -33,6 +35,13 @@ const Main = () => {
         },
     ]
 
+    useEffect(() => {
+        if (window.location.hash === "#feedback") {
+            feedbackRef.current.scrollIntoView({behavior: "smooth" });
+        }
+    }, [feedbackRef]);
+
+
     return (
     <>
         <MainTitle/>
@@ -43,6 +52,7 @@ const Main = () => {
                 </div>
                 <Feedbacks/>
                 {user.status==='Авторизован' && <FeedbackForm/>}
+                <div ref={feedbackRef}></div>
             </div>
         </main>
     </>
