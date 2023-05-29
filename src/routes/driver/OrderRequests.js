@@ -16,15 +16,15 @@ function OrderRequests(props) {
 
     const dispatch = useDispatch()
 
-    const endsWith = location.pathname.endsWith('requests')
+    const isRequests = location.pathname.endsWith('requests')
 
     useEffect(() => {
-        if(endsWith) {
-            const filtered = requests.filter(request => request?.response?.status==='n')
-            setData([...filtered])
+        if(isRequests) {
+            const filteredRequest = requests.filter(request => request?.response?.status!=='a')
+            setData([...filteredRequest])
         } else {
-            const filtered = requests.filter(request => request?.response?.status==='a')
-            setData([...filtered])
+            const drives = requests?.filter(request => (request?.response?.status === 'a'))
+            setData([...drives])
         }
     }, [location, requests])
 
@@ -35,16 +35,16 @@ function OrderRequests(props) {
     return (
     <div className="requests">
         <div className="requests__header">
-            <h2 className="requests__title">{endsWith ? 'Заявки' : "Поездки"}</h2>
+            <h2 className="requests__title">{isRequests ? 'Заявки' : "Поездки"}</h2>
             {userTag(user)}
         </div>
-        <div className={"requests__body " + (!endsWith && 'request__order')}>
+        <div className={"requests__body " + (!isRequests && 'request__order')}>
             <div className={"requests__head head "}>
                 <p className="head__column">Дата поездки</p>
                 <p className="head__column">Откуда</p>
                 <p className="head__column">Куда</p>
                 <p className="head__column">Пассажиры</p>
-                <p className="head__column">{endsWith ? 'Ваше предложение' : "Стоимость"}</p>
+                <p className="head__column">{isRequests ? 'Ваше предложение' : "Стоимость"}</p>
             </div>
             {data.map(request=> (
                 <Request request={request} key={`request${request.id}`}/>

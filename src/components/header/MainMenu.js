@@ -17,15 +17,15 @@ function MainMenu(props) {
 
     return (
     <>
-        <NavLink className="menu__link link" to={'/'}>Главная</NavLink>
+        <NavLink className="menu__link link" to={'/'}>ГЛАВНАЯ</NavLink>
         {user.status === 'Авторизован' &&
-            (user.is_staff ? <NavLink to={'/driver/profile'} className="menu__link">Мой кабинет</NavLink> :
-                <NavLink to={'/user/upcomingOrders'} className="menu__link">Мой кабинет</NavLink>)
+            (user.is_staff ? <NavLink to={'/driver/requests'} className="menu__link">МОЙ КАБИНЕТ</NavLink> :
+                <NavLink to={'/user/upcomingOrders'} className="menu__link">МОЙ КАБИНЕТ</NavLink>)
         }
-        <NavLink className="menu__link link" to={'registerDriver'}>Стать перевозчиком</NavLink>
-        <a className="menu__link link" href={'#feedback'} >Отзывы</a>
-        <NavLink className="menu__link link" to={'questions'}>Вопросы и ответы</NavLink>
-        {user.status==='Авторизован' && <a href="src/components/header/Header" className="menu__link" onClick={handleLogout}>Выйти</a>}
+        <NavLink className="menu__link link" to={'registerDriver'}>СТАТЬ ПЕРЕВОЗЧИКОМ</NavLink>
+        <a className="menu__link link" href={'#feedback'} >ОТЗЫВЫ</a>
+        <NavLink className="menu__link link" to={'questions'}>ВОПРОСЫ И ОТВЕТЫ</NavLink>
+        {user.status==='Авторизован' && <a href="src/components/header/Header" className="menu__link" onClick={handleLogout}>ВЫЙТИ</a>}
     </>
     );
 }

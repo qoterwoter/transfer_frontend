@@ -31,7 +31,7 @@ export const updateRequest = createAsyncThunk('ordere/updateRequest', async ({id
 })
 
 export const chooseRequestFromClient = createAsyncThunk('orders/chooseRequestFromClient', async ({id, status}) => {
-    const response = await axios.put(`${API_URL}/choose-request/${id}/`, {status}, headers)
+    const response = await axios.put(`${API_URL}/driver-responses/${id}/`, {status}, headers)
     return response
 })
 

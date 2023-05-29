@@ -16,14 +16,14 @@ function UserMenu(props) {
 
     return (
     <>
-        <NavLink className="menu__link link" to={'/'}>Главная</NavLink>
-        <NavLink className="menu__link link" to={'create'}>Создать</NavLink>
-        <NavLink className="menu__link link" to={'upcomingOrders'}>Предстоящие</NavLink>
-        <NavLink className="menu__link link" to={'pastOrders'}>Прошедшие</NavLink>
-        <NavLink className="menu__link link" to={{pathname: '/', hash: '#feedback'}}>Написать отзыв</NavLink>
-        <NavLink className="menu__link link" to={'profile'}>Настройки профиля</NavLink>
-        <NavLink className="menu__link link" to={'support'}>Техническая поддержка</NavLink>
-        {user.status==='Авторизован' && <a href="src/components/header/Header" className="menu__link" onClick={handleLogout}>Выйти</a>}
+        <NavLink className="menu__link link" to={'/'}>ГЛАВНАЯ</NavLink>
+        <NavLink className="menu__link link" to={'create'}>СОЗДАТЬ</NavLink>
+        <NavLink className="menu__link link" to={'upcomingOrders'}>ПРЕДСТОЯЩИЕ</NavLink>
+        <NavLink className="menu__link link" to={'pastOrders'}>ПРОШЕДШИЕ</NavLink>
+        <NavLink className="menu__link link" to={{pathname: '/', hash: '#feedback'}}>НАПИСАТЬ ОТЗЫВ</NavLink>
+        <NavLink className="menu__link link" to={'profile'}>НАСТРОЙКИ ПРОФИЛЯ</NavLink>
+        <NavLink className="menu__link link" to={'support'}>ТЕХНИЧЕСКАЯ ПОДДЕРЖКА</NavLink>
+        {user.status==='Авторизован' && <a href="src/components/header/Header" className="menu__link" onClick={handleLogout}>ВЫЙТИ</a>}
     </>
     );
 }

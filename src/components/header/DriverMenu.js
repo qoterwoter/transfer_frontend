@@ -16,13 +16,13 @@ function UserMenu(props) {
 
     return (
         <>
-            <NavLink className="menu__link link" to={'/'}>Главная</NavLink>
-            <NavLink className="menu__link link" to={'requests'}>Заказы</NavLink>
-            <NavLink className="menu__link link" to={'orders'}>Поездки</NavLink>
-            <NavLink className="menu__link link" to={'profile'}>Мои данные</NavLink>
-            <NavLink className="menu__link link" to={'car'}>Моё авто</NavLink>
-            <NavLink className="menu__link link" to={'support'}>Техническая поддержка</NavLink>
-            {user.status==='Авторизован' && <a href="src/components/header/Header" className="menu__link" onClick={handleLogout}>Выйти</a>}
+            <NavLink className="menu__link link" to={'/'}>ГЛАВНАЯ</NavLink>
+            <NavLink className="menu__link link" to={'requests'}>ЗАКАЗЫ</NavLink>
+            <NavLink className="menu__link link" to={'orders'}>ПОЕЗДКИ</NavLink>
+            <NavLink className="menu__link link" to={'profile'}>МОИ ДАННЫЕ</NavLink>
+            <NavLink className="menu__link link" to={'car'}>МОЁ АВТО</NavLink>
+            <NavLink className="menu__link link" to={'support'}>ТЕХНИЧЕСКАЯ ПОДДЕРЖКА</NavLink>
+            {user.status==='Авторизован' && <a href="src/components/header/Header" className="menu__link" onClick={handleLogout}>ВЫЙТИ</a>}
         </>
     );
 }

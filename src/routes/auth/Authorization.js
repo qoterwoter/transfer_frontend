@@ -28,7 +28,11 @@ function Authorization(props) {
     }
 
     useEffect(() => {
-        if (user.status==='Авторизован') {
+        if (user.status === 'Авторизован') {
+            if (user.is_staff) {
+                navigate('/driver/requests')
+                return
+            }
             navigate('/')
         }
     }, [user])

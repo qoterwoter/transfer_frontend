@@ -20,6 +20,7 @@ function Registration(props) {
     const [firstName, setFirstName] = useState('Валерия')
     const [lastName, setLastName] = useState('Гучустян')
     const [phoneNumber, setPhoneNumber] = useState('+7 (926) 848 95 65')
+    const [agreed, setAgreed] = useState(false)
 
     const onChangeUsername = e => setUsername(e.target.value)
     const onChangePhone = e => setPhoneNumber(e.target.value)
@@ -43,8 +44,11 @@ function Registration(props) {
         const data = {firstName, lastName, username, password, email, phoneNumber, is_staff: 'False'}
         if (props.type==='driver') {data.is_staff='True'}
 
-        console.log(data)
-        await dispatch(registerUser(data, {navigate}))
+        if (agreed) {
+            dispatch(registerUser(data, {navigate}))
+        } else {
+            toast.error('Прочитайте пользовательское соглашение')
+        }
     }
 
     useEffect(() => {
@@ -132,7 +136,9 @@ function Registration(props) {
                         <input
                             type={'checkbox'}
                             id={'userSuccess'}
-                            required
+                            value={agreed}
+                            required={true}
+                            onChange={() => {setAgreed(!agreed)}}
                         />
                         <label className={'form__label'} htmlFor={'userSuccess'}>Я прочитал пользовательское соглашение</label>
                     </div>
