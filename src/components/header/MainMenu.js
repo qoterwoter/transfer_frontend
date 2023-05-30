@@ -22,10 +22,10 @@ function MainMenu(props) {
             (user.is_staff ? <NavLink to={'/driver/requests'} className="menu__link">МОЙ КАБИНЕТ</NavLink> :
                 <NavLink to={'/user/upcomingOrders'} className="menu__link">МОЙ КАБИНЕТ</NavLink>)
         }
-        <NavLink className="menu__link link" to={'registerDriver'}>СТАТЬ ПЕРЕВОЗЧИКОМ</NavLink>
+        {user.status !== 'Авторизован' && <NavLink className="menu__link link" to={'registerDriver'}>СТАТЬ ПЕРЕВОЗЧИКОМ</NavLink>}
         <a className="menu__link link" href={'#feedback'} >ОТЗЫВЫ</a>
         <NavLink className="menu__link link" to={'questions'}>ВОПРОСЫ И ОТВЕТЫ</NavLink>
-        {user.status==='Авторизован' && <a href="src/components/header/Header" className="menu__link" onClick={handleLogout}>ВЫЙТИ</a>}
+        {user.status ==='Авторизован' && <a href="src/components/header/Header" className="menu__link" onClick={handleLogout}>ВЫЙТИ</a>}
     </>
     );
 }

@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 import RateStars from "./RateStars";
 import {useDispatch} from "react-redux";
-import {setRate} from "../../reducers/ordersSlice";
+import {fetchRatings, setRate} from "../../reducers/ordersSlice";
 import toast from "react-hot-toast";
 
 function Rate(props) {
-    const [communication, setCommunication] = useState(1)
-    const [driver, setDriver] = useState(1)
-    const [transport, setTransport] = useState(1)
+    const [communication, setCommunication] = useState(0)
+    const [driver, setDriver] = useState(0)
+    const [transport, setTransport] = useState(0)
 
     const dispatch = useDispatch()
 
@@ -22,6 +22,7 @@ function Rate(props) {
         }
 
         await dispatch(setRate(data))
+        dispatch(fetchRatings())
         props.closeRate()
     }
 

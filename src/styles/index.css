@@ -166,7 +166,7 @@ body #root {
   align-items: center;
   min-height: 100vh;
   width: 250px;
-  background: #D9D9D9;
+  background: white;
 }
 .header.header_user {
   background-color: #353434;
@@ -188,6 +188,7 @@ body #root {
 .header .header__nav {
   display: flex;
   flex-direction: column;
+  gap: 8px;
 }
 .header .header__nav .menu__link {
   font-size: 20px;
@@ -197,7 +198,7 @@ body #root {
   width: 100%;
 }
 .header .header__nav .menu__link.active {
-  background: white;
+  background: #D9D9D9;
 }
 
 .main, .mainTitle {
@@ -270,11 +271,9 @@ body #root {
 }
 .main .orders .order {
   padding: 16px;
-  width: 900px;
   border: 1px solid #7C7676;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
   align-items: center;
   gap: 10px;
 }
@@ -287,7 +286,6 @@ body #root {
   display: flex;
   align-items: center;
   justify-content: center;
-  grid-row: span 2;
 }
 .main .orders .order .row__item_choose {
   border: 2px solid #A78383;
@@ -462,8 +460,8 @@ body #root {
 }
 .main .orderDetail .orderDetail__body .orderDetail__noResponses .arrow {
   display: block;
-  height: min-content;
   width: 200px;
+  height: 14px;
   margin: 30px;
 }
 .main .orderDetail .orderDetail__body .orderDetail__noResponses .column {
@@ -579,17 +577,25 @@ body #root {
 .main .questions .question .question__title {
   cursor: pointer;
 }
+.main .questions .question .question__title .question__arrow {
+  display: inline-block;
+  margin-right: 5px;
+  transition: 0.3s;
+}
+.main .questions .question .question__title .question__arrow_show {
+  transform: rotateZ(90deg);
+}
 .main .questions .question .question__description,
 .main .questions .question .question__list {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.8s ease-in-out;
+  transition: max-height 0.5s ease-in-out;
 }
-.main .questions .question .description--show,
+.main .questions .question .description__show,
 .main .questions .question .list--show {
   max-height: 1000px;
 }
-.main .questions .question .description--hide,
+.main .questions .question .description__hide,
 .main .questions .question .list--hide {
   max-height: 0;
 }

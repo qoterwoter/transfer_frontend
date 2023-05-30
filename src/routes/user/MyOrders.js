@@ -84,6 +84,12 @@ function MyOrders(props) {
                 </div>
             </form>
         </div>
+        <div className="orders__order order">
+            <p className="row__item">Дата создания</p>
+            <p className="row__item">Дата поездки</p>
+            <p className="row__item">Откуда</p>
+            <p className="row__item">Куда</p>
+        </div>
         {ends ? <>
             <OrdersList orders={sortedOrders.filter(order => {
                 const now = new Date().valueOf()

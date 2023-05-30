@@ -37,18 +37,14 @@ function OrderItem(props) {
     }, [ref.current])
     return (
         <article className={'orders__order order'} ref={ref}>
-            <p className="row__item">Дата создания</p>
-            <p className="row__item">Дата поездки</p>
-            <p className="row__item">Откуда</p>
-            <p className="row__item">Куда</p>
+            {row}
             {end ?
                 !rating ? (
                     <a className='row__item row__item_choose link' onClick={openRate}>Оценить</a>
                     ) : (
-                    <p className={'row__item row__item_filled'}>Оценено</p>
+                    <div className={'row__item row__item_filled'}>Оценено</div>
                 ) :
                 <NavLink className='row__item row__item_choose link' to={`${props.orderId}`}>Выбрать</NavLink>}
-            {row}
             {isShow && <Rate orderId={props.orderId} refer={ref} closeRate={closeRate}/>}
         </article>
     );

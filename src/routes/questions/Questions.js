@@ -11,13 +11,14 @@ function Question(props) {
 
     return (
         <div className="questions__question question">
-            <h3 className="question__title" onClick={toggleIsShow}>➤ {question.title}</h3>
+            <h3 className="question__title" onClick={toggleIsShow}>
+                <span className={`question__arrow question__arrow_${isShow ? 'show' :'hide'}`}>►</span>
+                {question.title}
+            </h3>
             {question.isList ? (
-                <ol
-                    className={`question__list list ${
+                <ol className={`question__list list ${
                         isShow ? 'list--show' : 'list--hide'
-                    }`}
-                >
+                    }`}>
                     {question.listItems.map((item, id) => (
                         <li className="list__item item" key={`item${id}`}>
                             {item}
@@ -25,11 +26,9 @@ function Question(props) {
                     ))}
                 </ol>
             ) : (
-                <p
-                    className={`question__description ${
-                        isShow ? 'description--show' : 'description--hide'
-                    }`}
-                >
+                <p className={`question__description description__${
+                        isShow ? 'show' : 'hide'
+                }`}>
                     {question.description}
                 </p>
             )}

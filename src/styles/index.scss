@@ -128,7 +128,7 @@ body {
     align-items: center;
     min-height: 100vh;
     width: 250px;
-    background: $background-active;
+    background: white;
     &.header_user {
         background-color: $background;
         .header__nav .menu__link {
@@ -150,6 +150,7 @@ body {
     .header__nav {
         display: flex;
         flex-direction: column;
+        gap: 8px;
         .menu__link {
             font-size: 20px;
             text-decoration: none;
@@ -157,7 +158,7 @@ body {
             color: black;
             width: 100%;
             &.active {
-                background: white;
+                background: $background-active;
             }
         }
     }
@@ -237,11 +238,9 @@ body {
         }
         .order {
             padding: 16px;
-            width: 900px;
             border: $border;
             display: grid;
             grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-            grid-template-rows: 1fr 1fr;
             align-items: center;
             gap: 10px;
             .row__item {
@@ -253,7 +252,6 @@ body {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                grid-row: span 2;
             }
             .row__item_choose {
                 border: 2px solid #A78383;
@@ -358,7 +356,6 @@ body {
             align-items: center;
             .header__route {
                 display: flex;
-
                 .orderDetail__separator {
                     margin: 0 7px;
                 }
@@ -439,8 +436,8 @@ body {
                 justify-content: center;
                 .arrow {
                     display: block;
-                    height: min-content;
                     width: 200px;
+                    height: 14px;
                     margin: 30px;
                 }
                 .column {
@@ -572,20 +569,28 @@ body {
             }
             .question__title {
                 cursor: pointer;
+                .question__arrow {
+                    display: inline-block;
+                    margin-right: 5px;
+                    transition: .3s;
+                }
+                .question__arrow_show {
+                    transform: rotateZ(90deg);
+                }
             }
             .question__description,
             .question__list {
                 max-height: 0;
                 overflow: hidden;
-                transition: max-height .8s ease-in-out;
+                transition: max-height .5s ease-in-out;
             }
 
-            .description--show,
+            .description__show,
             .list--show {
                 max-height: 1000px;
             }
 
-            .description--hide,
+            .description__hide,
             .list--hide {
                 max-height: 0;
             }
