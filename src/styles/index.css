@@ -266,13 +266,14 @@ body #root {
 
 .mainTitle {
   background: url("../images/background.jpg") no-repeat;
-  background-size: 100% auto;
+  background-size: 200vh auto;
   background-position-y: -100px;
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: end;
   padding: 55px 90px;
+  color: white;
 }
 .mainTitle .mainTitle__title {
   margin: 30px auto;
