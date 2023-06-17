@@ -52,7 +52,9 @@ const App = () => {
     }, [ref.current])
 
     useEffect(() => {
-        toggleMenu()
+        if(!showMenu) {
+            toggleMenu()
+        }
     }, [location])
 
     const toggleMenu = () => {setShowMenu(!showMenu)}

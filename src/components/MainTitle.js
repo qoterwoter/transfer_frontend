@@ -23,6 +23,7 @@ const MainTitle = () => {
         <h1 className="mainTitle__title">Трансфер между Абхазией и Россией</h1>
         <p className="mainTitle__description">Transfer Abkhazia - это сервис бронирования трансфера между
             Абхазией и Россией. На нашем сервисе вы можете онлайн оставить заявку на трансфер и выбрать понравившегося водителя по выгодной цене.</p>
+        <NavLink className={'register'} to={'/registerUser'}>Получить предложения</NavLink>
     </div>
     )
 }

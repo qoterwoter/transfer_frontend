@@ -66,12 +66,14 @@
   height: 3px;
   width: 25px;
   border-radius: 10px;
-  background-color: black;
+  background-color: white;
+  box-shadow: 0 0 5px gray;
   transition: 0.3s;
 }
 .burgerMenu.burgerMenu_show .row {
   width: 30px;
-  background-color: black;
+  background-color: black !important;
+  box-shadow: none;
 }
 .burgerMenu.burgerMenu_show .row:first-child {
   transform: rotate(45deg);
@@ -274,6 +276,7 @@ body #root {
   align-items: end;
   padding: 55px 90px;
   color: white;
+  text-align: center;
 }
 .mainTitle .mainTitle__title {
   margin: 30px auto;
@@ -288,13 +291,25 @@ body #root {
   display: flex;
   width: fit-content;
   justify-content: space-between;
-  border: 1px solid black;
+  border: 1px solid white;
   border-radius: 20px;
   padding: 12px 30px;
   font-size: 20px;
+  margin-top: 20px;
+}
+.mainTitle .mainTitle__actions * {
+  color: white;
 }
 .mainTitle .mainTitle__actions .actions__separator {
   margin: 0 7px;
+}
+.mainTitle .register {
+  margin: 0 auto;
+  color: white;
+  background-color: #A4C7AC;
+  text-decoration: none;
+  border-radius: 15px;
+  padding: 10px 30px;
 }
 
 .main {
@@ -746,8 +761,7 @@ body #root {
     padding: 0 30px;
   }
   .mainTitle {
-    height: 70vh;
-    background-size: 130vh;
+    height: 100vh;
     color: white;
     text-shadow: 0 0 15px #676767;
   }

@@ -200,6 +200,7 @@ body {
     align-items: end;
     padding: 55px 90px;
     color: white;
+    text-align: center;
     .mainTitle__title {
         margin: 30px auto;
         font-size: 50px;
@@ -213,13 +214,25 @@ body {
         display: flex;
         width: fit-content;
         justify-content: space-between;
-        border: 1px solid black;
+        border: 1px solid white;
         border-radius: 20px;
         padding: 12px 30px;
         font-size: 20px;
+        margin-top: 20px;
+        * {
+            color: white;
+        }
         .actions__separator {
             margin: 0 7px;
         }
+    }
+    .register {
+        margin: 0 auto;
+        color: white;
+        background-color: #A4C7AC;
+        text-decoration: none;
+        border-radius: 15px;
+        padding: 10px 30px;
     }
 }
 
