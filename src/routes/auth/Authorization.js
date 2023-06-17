@@ -16,24 +16,20 @@ function Authorization(props) {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    const auth = async (e) => {
+    const auth =  (e) => {
         e.preventDefault()
 
         if (username.length < 5) toast.error('Введите корректное имя')
         else if (password.length < 5) toast.error('Введите корректный пароль')
         else {
-            await dispatch(authUser({username, password}))
-            window.location.reload();
+            dispatch(authUser({username, password}))
         }
     }
 
     useEffect(() => {
         if (user.status === 'Авторизован') {
-            if (user.is_staff) {
-                navigate('/driver/requests')
-                return
-            }
             navigate('/')
+            window.location.reload();
         }
     }, [user])
 

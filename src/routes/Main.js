@@ -7,6 +7,7 @@ import {useSelector} from "react-redux";
 import prices from '../images/prices.png'
 import safety from '../images/safety.png'
 import best from '../images/best.png'
+import Footer from "../components/Footer";
 
 const Main = () => {
     const user = useSelector(state => state.user)

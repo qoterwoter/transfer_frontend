@@ -3,12 +3,18 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import toast from "react-hot-toast";
 
 export const user = JSON.parse(localStorage.getItem('user')) || {}
-export const API_URL = 'http://127.0.0.1:8000/api'
+export const API_URL = 'http://127.0.0.1:8000/api' // http://transferabkhazia.ru/ http://127.0.0.1:8000/
 export const headers = {headers: {'Authorization': `Token ${user.token}`}}
 
-export const authUser = createAsyncThunk('user/authUser', async ({username, password}) => {
-    const response = await axios.post(`${API_URL}/login/`, {username, password})
-    return response
+export const authUser = createAsyncThunk('user/authUser', async ({username, password}, {rejectWithValue}) => {
+    try {
+        const response = await axios.post(
+            API_URL + '/login/',{username, password}
+        )
+        return response
+    } catch (e) {
+        return rejectWithValue(e.response.data)
+    }
 })
 
 export const registerUser = createAsyncThunk('user/registerUser', async ({firstName, lastName, username, password, email, phoneNumber, is_staff}) => {
@@ -37,15 +43,15 @@ const userSlice = createSlice({
     },
     extraReducers: {
         [authUser.fulfilled]: (state, action) => {
+            console.log(action)
             const data = {...action.payload.data, status: "Авторизован"};
             localStorage.setItem("user", JSON.stringify(data))
             return data
         },
         [authUser.rejected]: (state, action) => {
-            console.log(action)
+            const error = Object.values(action.payload)[0]
             state.status = 'Ошибка'
-            state.errorCode = action.error.message
-            toast.error('Ошибка: ' + action.error.message)
+            toast.error('Ошибка: ' + error)
         },
         [registerUser.rejected]: (state, action) => {
             state.status = 'Ошибка'

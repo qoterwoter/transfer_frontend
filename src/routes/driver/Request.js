@@ -12,6 +12,8 @@ function Request(props) {
 
     const request = props.request
 
+    const client = request.client
+
     const [price, setPrice] = useState(request.response?.price || '')
     const [isOffer, setIsOffer] = useState(false)
     const [isEdit, setIsEdit] = useState(false)
@@ -65,6 +67,11 @@ function Request(props) {
                     <p className="passenger__count">x {request.children_amount}</p>
                 </div>
             </div>
+            <div className="request__item">
+                <p>{client.first_name} {client.last_name}</p>
+                <p>{client.phoneNumber}</p>
+                <p>{client.email}</p>
+            </div>
             {endsWith ? (
             <div className="request__item item__response">
                 {request?.response ? (
@@ -117,11 +124,12 @@ function Request(props) {
                     )}
                 </>)}
             </div>
-            ) : (
+            ) : (<>
+            <p className="request__item">{request.to_location}</p>
             <div className="request__item item__cost">
                 <p className="response__price">{request.response?.price} р.</p>
             </div>
-            )}
+            </>)}
         </div>
     );
 }

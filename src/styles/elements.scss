@@ -4,10 +4,10 @@
     transition: .2s;
     cursor: pointer;
     &:hover {
-        color: $background;
+        color: #7e7a7a;
     }
     &:active {
-        color: gray;
+        color: #8a8a8a;
     }
 }
 
@@ -45,4 +45,44 @@
              background: $green;
          }
      }
+}
+
+.icon {
+    &.icon_light {
+        filter: invert(100%);
+    }
+}
+
+.burgerMenu {
+    padding: 10px;
+    position: fixed;
+    z-index: 100;
+    top: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    .row {
+        content: "";
+        height: 3px;
+        width: 25px;
+        border-radius: 10px;
+        background-color: black;
+        transition: .3s;
+    }
+    &.burgerMenu_show .row {
+        width: 30px;
+        background-color: black;
+        &:first-child {
+            transform: rotate(45deg);
+            transform-origin: top left;
+        }
+        &:nth-child(2) {
+            transition: all 100ms ease-in-out;
+            width: 0;
+        }
+        &:last-child {
+            transform: rotate(-45deg);
+            transform-origin: bottom left;
+        }
+    }
 }

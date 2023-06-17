@@ -140,8 +140,15 @@ body {
         }
     }
 
+    .container {
+        height: 70vh;
+        min-height: 450px;
+    }
+
     .header__title {
         padding: 10px 37px;
+        display: block;
+        width: 100%;
         .header__logo {
             display: block;
             width: 100%;
@@ -151,7 +158,15 @@ body {
         display: flex;
         flex-direction: column;
         gap: 8px;
+        width: 100%;
         .menu__link {
+            .menu__icon {
+                display: block;
+                height: 20px;
+                margin-right: 15px;
+            }
+            display: flex;
+            align-items: center;
             font-size: 20px;
             text-decoration: none;
             padding: 10px 37px;
@@ -159,17 +174,24 @@ body {
             width: 100%;
             &.active {
                 background: $background-active;
+                .menu__icon {
+                    filter: invert(100%);
+                    &.icon_light {
+                        filter: none !important;
+                    }
+                }
             }
         }
     }
 }
 
-.main, .mainTitle {
+.main,
+.mainTitle {
     margin-left: 250px;
 }
 
 .mainTitle {
-    background: url("../images/background.png") no-repeat;
+    background: url("../images/background.jpg") no-repeat;
     background-size: 100% auto;
     background-position-y: -100px;
     height: 100vh;
@@ -202,6 +224,7 @@ body {
 
 .main {
     padding: 20px 60px;
+    min-height: 89vh;
     .support {
         .request {
             .request__status {
@@ -406,7 +429,7 @@ body {
                 grid-gap: 32px;
                 .response {
                     display: grid;
-                    grid-template-columns: 1fr 2fr;
+                    grid-template-columns: 1fr 2fr 4fr;
                     border-radius: 10px;
                     border: $border;
                     .response__carPhoto {
@@ -516,13 +539,13 @@ body {
         }
         .requests__body {
             &.request__order * {
-                grid-template-columns: repeat(5, 2fr);
+                grid-template-columns: repeat(6, 2fr);
             }
             >* {
                 border: $border;
                 display: grid;
                 grid-gap: 10px;
-                grid-template-columns: repeat(4, 2fr) 3fr;
+                grid-template-columns: repeat(5, 2fr) 3fr;
                 align-items: center;
                 padding: 15px;
                 * {
@@ -598,3 +621,25 @@ body {
         }
     }
 }
+
+.footer {
+    padding: 13px 37px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    height: 20vh;
+    min-height: 220px;
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    .footer__title {
+        font-weight: 100;
+        font-size: 20px;
+        color: black;
+        margin-bottom: 10px;
+    }
+}
+
+@import "adaptive";

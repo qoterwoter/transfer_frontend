@@ -44,6 +44,7 @@ function OrderRequests(props) {
                 <p className="head__column">Откуда</p>
                 <p className="head__column">Куда</p>
                 <p className="head__column">Пассажиры</p>
+                <p className="head__column">Заказчик</p>
                 <p className="head__column">{isRequests ? 'Ваше предложение' : "Стоимость"}</p>
             </div>
             {data.map(request=> (
