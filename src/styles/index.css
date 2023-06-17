@@ -218,6 +218,15 @@ body #root {
   background: #D9D9D9;
   color: black;
 }
+.header.header_user .header__nav .menu__link.active .menu__icon {
+  filter: invert(100%);
+}
+.header.header_user .header__nav .menu__link.active .menu__icon.icon_light {
+  filter: none !important;
+}
+.header.header_user .header__title .header__logo {
+  filter: invert(90%);
+}
 .header .container {
   height: 70vh;
   min-height: 450px;
@@ -253,12 +262,6 @@ body #root {
 }
 .header .header__nav .menu__link.active {
   background: #D9D9D9;
-}
-.header .header__nav .menu__link.active .menu__icon {
-  filter: invert(100%);
-}
-.header .header__nav .menu__link.active .menu__icon.icon_light {
-  filter: none !important;
 }
 
 .main,

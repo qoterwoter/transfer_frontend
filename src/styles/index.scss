@@ -136,7 +136,16 @@ body {
             &.active {
                 background: $background-active;
                 color: black;
+                .menu__icon {
+                    filter: invert(100%);
+                    &.icon_light {
+                        filter: none !important;
+                    }
+                }
             }
+        }
+        .header__title .header__logo {
+            filter: invert(90%);
         }
     }
 
@@ -174,12 +183,7 @@ body {
             width: 100%;
             &.active {
                 background: $background-active;
-                .menu__icon {
-                    filter: invert(100%);
-                    &.icon_light {
-                        filter: none !important;
-                    }
-                }
+
             }
         }
     }

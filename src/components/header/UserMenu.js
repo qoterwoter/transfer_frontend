@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {unAuthorize} from "../../reducers/userSlice";
 import {useDispatch, useSelector} from "react-redux";
-import {NavLink, useNavigate} from "react-router-dom";
+import {NavLink, useLocation, useNavigate} from "react-router-dom";
 
 import homeIcon from "../../images/icons/home.png";
 import profileIcon from "../../images/icons/profile.png";
@@ -16,12 +16,15 @@ function UserMenu(props) {
     const dispatch = useDispatch()
     const user = useSelector(state => state.user)
     const navigate = useNavigate()
+    const location = useLocation()
+
 
     const handleLogout = (e) => {
         e.preventDefault()
         dispatch(unAuthorize())
         navigate('/')
     }
+
 
     return (
     <>

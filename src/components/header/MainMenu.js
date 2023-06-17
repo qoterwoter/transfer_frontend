@@ -7,6 +7,7 @@ import homeIcon from '../../images/icons/home.png'
 import feedbacksIcon from '../../images/icons/feedbacks.png'
 import questionsIcon from '../../images/icons/questions.png'
 import truckIcon from '../../images/icons/truck.png'
+import profileIcon from "../../images/icons/profile.png";
 
 function MainMenu(props) {
     const user = useSelector(state => state.user)
@@ -33,7 +34,7 @@ function MainMenu(props) {
                     Мой кабинет
                 </NavLink> :
                 <NavLink to={'/user/upcomingOrders'} className="menu__link">
-                    <img className={'menu__icon'} src={homeIcon}/>
+                    <img className={'menu__icon icon icon_light'} alt={'icon'} src={profileIcon}/>
                     Мой кабинет
                 </NavLink>)
         }

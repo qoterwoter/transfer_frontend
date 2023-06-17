@@ -21,7 +21,6 @@ const Header = (props) => {
     }, [location])
 
 
-
     return (
     <header className={'header ' + classList}>
         <div className="container">
