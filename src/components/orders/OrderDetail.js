@@ -42,16 +42,18 @@ function OrderDetailResponses(props) {
     return (
     <div className={'response'} key={response.id}>
         <img className={'response__carPhoto'} src={`${API_URL.slice(0,-4)}/` + car?.car_photo_path}/>
-        <div className="response__description">
-            <p className="response__carName">{car?.name}</p>
-            <p className="response__duration">Стоимость: {response?.price} р.</p>
-            {!props.isChoose && <button className={'button button_submit'} onClick={chooseDriver}>Выбрать водителя</button>}
-        </div>
-        <div className="response__description">
-            <p className="response__carName">Данные о водителе</p>
-            <p className="resoinse__driver">Имя: {driver.first_name} {driver.last_name}</p>
-            <p className="response__duration">Почта: {driver.email}</p>
-            <p className="resoinse__driver">Телефон: {driver.phoneNumber}</p>
+        <div className="container">
+            <div className="response__description">
+                <p className="response__carName">{car?.name}</p>
+                <p className="response__duration">Стоимость: {response?.price} р.</p>
+                {!props.isChoose && <button className={'button button_submit'} onClick={chooseDriver}>Выбрать водителя</button>}
+            </div>
+            <div className="response__description">
+                <p className="response__carName">Данные о водителе</p>
+                <p className="resoinse__driver">Имя: {driver.first_name} {driver.last_name}</p>
+                <p className="response__duration">Почта: {driver.email}</p>
+                <p className="resoinse__driver">Телефон: {driver.phoneNumber}</p>
+            </div>
         </div>
     </div>
     )

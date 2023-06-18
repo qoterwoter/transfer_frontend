@@ -474,7 +474,7 @@ body {
                 grid-gap: 32px;
                 .response {
                     display: grid;
-                    grid-template-columns: 1fr 2fr 4fr;
+                    grid-template-columns: 1fr 2fr;
                     border-radius: 10px;
                     border: $border;
                     .response__carPhoto {
@@ -485,11 +485,15 @@ body {
                         object-fit: cover;
                         overflow: hidden;
                     }
-                    .response__description {
-                        padding: 12px;
-                        .response__carName {
-                            margin: 0;
-                            font-size: 20px;
+                    .container {
+                        display: flex;
+                        justify-content: space-between;
+                        .response__description {
+                            padding: 12px;
+                            .response__carName {
+                                margin: 0;
+                                font-size: 20px;
+                            }
                         }
                     }
                 }

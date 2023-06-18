@@ -533,7 +533,7 @@ body #root {
 }
 .main .orderDetail .orderDetail__body .orderDetail__responses .response {
   display: grid;
-  grid-template-columns: 1fr 2fr 4fr;
+  grid-template-columns: 1fr 2fr;
   border-radius: 10px;
   border: 1px solid #7C7676;
 }
@@ -545,10 +545,14 @@ body #root {
   object-fit: cover;
   overflow: hidden;
 }
-.main .orderDetail .orderDetail__body .orderDetail__responses .response .response__description {
+.main .orderDetail .orderDetail__body .orderDetail__responses .response .container {
+  display: flex;
+  justify-content: space-between;
+}
+.main .orderDetail .orderDetail__body .orderDetail__responses .response .container .response__description {
   padding: 12px;
 }
-.main .orderDetail .orderDetail__body .orderDetail__responses .response .response__description .response__carName {
+.main .orderDetail .orderDetail__body .orderDetail__responses .response .container .response__description .response__carName {
   margin: 0;
   font-size: 20px;
 }
@@ -780,6 +784,9 @@ body #root {
     align-items: center;
     justify-content: space-between;
   }
+  .main .orderDetail .orderDetail__body .orderDetail__responses .response .response__carPhoto {
+    width: 250px;
+  }
 }
 @media (max-width: 875px) {
   .header {
@@ -821,6 +828,28 @@ body #root {
   .main .requests .requests__header * {
     margin: 0;
   }
+  .main .orderDetail .orderDetail__body .orderDetail__noResponses {
+    flex-direction: column;
+    align-items: center;
+  }
+  .main .orderDetail .orderDetail__body .orderDetail__noResponses .arrow {
+    width: 50px;
+    height: 5px;
+    display: block;
+    rotate: 90deg;
+  }
+  .main .orderDetail .orderDetail__body .orderDetail__responses .response {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(2, fit-content);
+  }
+  .main .orderDetail .orderDetail__body .orderDetail__responses .response .container {
+    flex-direction: column-reverse;
+  }
+  .main .orderDetail .orderDetail__body .orderDetail__responses .response .response__carPhoto {
+    grid-row: span 2;
+    height: 100%;
+    width: 100%;
+  }
 }
 @media (max-width: 500px) {
   .header {
@@ -842,6 +871,16 @@ body #root {
   }
   .main .requests .requests__body .request {
     width: 100%;
+  }
+  .main .orderDetail .orderDetail__header {
+    flex-direction: column;
+  }
+  .main .orderDetail .orderDetail__body .orderDetail__responses .response {
+    display: flex;
+    flex-direction: column;
+  }
+  .main .orderDetail .orderDetail__body .orderDetail__responses .response .response__carPhoto {
+    border-radius: 10px 10px 0 0;
   }
 }
 

@@ -60,6 +60,13 @@
                 }
             }
         }
+        .orderDetail .orderDetail__body .orderDetail__responses {
+            .response {
+                .response__carPhoto {
+                    width: 250px;
+                }
+            }
+        }
     }
 }
 
@@ -106,6 +113,30 @@
                 }
             }
         }
+        .orderDetail .orderDetail__body {
+            .orderDetail__noResponses {
+                flex-direction: column;
+                align-items: center;
+                .arrow {
+                    width: 50px;
+                    height: 5px;
+                    display: block;
+                    rotate: 90deg;
+                }
+            }
+            .orderDetail__responses .response {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: repeat(2, fit-content);
+                .container {
+                    flex-direction: column-reverse;
+                }
+                .response__carPhoto {
+                    grid-row: span 2;
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+        }
     }
 }
 
@@ -131,6 +162,18 @@
         .requests .requests__body {
             .request {
                 width: 100%;
+            }
+        }
+        .orderDetail {
+            .orderDetail__header {
+                flex-direction: column;
+            }
+            .orderDetail__body .orderDetail__responses .response {
+                display: flex;
+                flex-direction: column;
+                .response__carPhoto {
+                    border-radius: 10px 10px 0 0;
+                }
             }
         }
     }
