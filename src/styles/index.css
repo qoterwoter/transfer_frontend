@@ -626,10 +626,13 @@ body #root {
   display: block;
   width: 200px;
 }
-.main .requests .requests__header {
+.main .requests .requests__header * {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.main .requests .requests__header .orders__sort {
+  width: 450px;
 }
 .main .requests .requests__body.request__order * {
   grid-template-columns: repeat(6, 2fr);

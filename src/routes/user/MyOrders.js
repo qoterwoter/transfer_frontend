@@ -48,7 +48,6 @@ function MyOrders(props) {
         dispatch(fetchRatings())
     },[dispatch])
 
-
     return (
     <section className={'orders'}>
         <div className="orders__header">

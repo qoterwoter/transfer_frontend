@@ -18,6 +18,9 @@ function OrderRequests(props) {
 
     const isRequests = location.pathname.endsWith('requests')
 
+    const [sortBy, setSortBy] = useState('dateCreate')
+    const [sortedOrders, setSortedOrders] = useState([])
+
     useEffect(() => {
         if(isRequests) {
             const filteredRequest = requests.filter(request => request?.response?.status!=='a')
@@ -32,11 +35,56 @@ function OrderRequests(props) {
         dispatch(fetchOrders())
     },[dispatch])
 
+    useEffect(() => {
+        setSortedOrders([...data])
+    }, [data])
+
+    useEffect(() => {
+        if(sortBy==='dateCreate') {
+            setSortedOrders([...data].sort((a, b) => new Date(b.created_at) - new Date(a.created_at)))
+        }
+        if(sortBy==='dateDeparture') {
+            setSortedOrders([...data].sort((a, b) => new Date(a.departure_time) - new Date(b.departure_time)))
+        }
+    }, [sortBy, data])
+
+    const sortByCreate = () => {setSortBy('dateCreate')}
+    const sortByDeparture = () => {setSortBy('dateDeparture')}
+
     return (
     <div className="requests">
         <div className="requests__header">
-            <h2 className="requests__title">{isRequests ? 'Заявки' : "Поездки"}</h2>
-            {userTag(user)}
+            <div className="header__title">
+                <h2 className="requests__title">{isRequests ? 'Заявки' : "Поездки"}</h2>
+                {userTag(user)}
+            </div>
+            <form className="orders__sort">
+                <h3 className="sort__title">Сортировать по</h3>
+                <div className="sort__item">
+                    <input
+                        className={'sort__action'}
+                        type={'radio'}
+                        checked={sortBy === 'dateCreate'}
+                        value={'dateCreate'}
+                        name={'sort'}
+                        id={'dateCreate'}
+                        onClick={sortByCreate}
+                    />
+                    <label htmlFor={'dateCreate'}>Дата создания</label>
+                </div>
+                <div className="sort__item">
+                    <input
+                        className={'sort__action'}
+                        type={'radio'}
+                        value={'dateCreate'}
+                        name={'sort'}
+                        checked={sortBy === 'dateDeparture'}
+                        id={'dateDeparture'}
+                        onClick={sortByDeparture}
+                    />
+                    <label htmlFor={'dateDeparture'}>Дата поездки</label>
+                </div>
+            </form>
         </div>
         <div className={"requests__body " + (!isRequests && 'request__order')}>
             <div className={"requests__head head "}>
@@ -47,7 +95,7 @@ function OrderRequests(props) {
                 <p className="head__column">Заказчик</p>
                 <p className="head__column">{isRequests ? 'Ваше предложение' : "Стоимость"}</p>
             </div>
-            {data.map(request=> (
+            {sortedOrders.map(request=> (
                 <Request request={request} key={`request${request.id}`}/>
             ))}
         </div>

@@ -578,9 +578,14 @@ body {
     }
     .requests {
         .requests__header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            * {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .orders__sort {
+                width: 450px;
+            }
         }
         .requests__body {
             &.request__order * {

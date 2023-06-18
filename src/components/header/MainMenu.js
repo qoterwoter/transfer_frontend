@@ -31,7 +31,7 @@ function MainMenu(props) {
         {user.status === 'Авторизован' &&
             (user.is_staff ?
                 <NavLink to={'/driver/requests'} className="menu__link">
-                    <img className={'menu__icon'} src={homeIcon}/>
+                    <img className={'menu__icon icon icon_light'} alt={'icon'} src={profileIcon}/>
                     Мой кабинет
                 </NavLink> :
                 <NavLink to={'/user/upcomingOrders'} className="menu__link">

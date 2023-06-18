@@ -125,7 +125,6 @@ function Request(props) {
                 </>)}
             </div>
             ) : (<>
-            <p className="request__item">{request.to_location}</p>
             <div className="request__item item__cost">
                 <p className="response__price">{request.response?.price} р.</p>
             </div>
