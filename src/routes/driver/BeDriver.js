@@ -1,8 +1,11 @@
 import React from 'react';
-import prices from "../../images/prices.png";
-import safety from "../../images/safety.png";
-import best from "../../images/best.png";
+import prices from "../../images/orders.png";
+import safety from "../../images/calendar.png";
+import best from "../../images/more.png";
 import Features from "../../components/general/Features";
+import {NavLink} from "react-router-dom";
+
+
 
 function BeDriver(props) {
     const features = [
@@ -24,13 +27,15 @@ function BeDriver(props) {
     ]
 
     return (
-        <main className="main">
-            <div className="general">
-                <div className="general__features features">
-                    {features.map((feature, id) => <Features feature={feature} key={`feature${id}`}/>)}
+        <div className="general">
+            <div className="general__features features">
+                <div className="features__header">
+                    <h2 className={'header__title'}>Зарабатывайте больше с Transfer Abkhazia!</h2>
+                    <NavLink className={'header__action'} to={'/registerDriver'}>Регистрация</NavLink>
                 </div>
+                {features.map((feature, id) => <Features feature={feature} key={`feature${id}`}/>)}
             </div>
-        </main>
+        </div>
     );
 }
 

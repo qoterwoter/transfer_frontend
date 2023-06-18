@@ -314,6 +314,9 @@ body #root {
   border-radius: 15px;
   padding: 10px 30px;
 }
+.mainTitle .userTag {
+  border-color: white;
+}
 
 .main {
   padding: 20px 60px;
@@ -415,7 +418,28 @@ body #root {
   align-items: stretch;
   height: max-content;
 }
+.main .general .general__features .features__header {
+  grid-column: span 3;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 35vh;
+}
+.main .general .general__features .features__header .header__title {
+  margin-top: 50px;
+  font-size: 32px;
+  margin-bottom: 10vh;
+}
+.main .general .general__features .features__header .header__action {
+  background-color: #A4C7AC;
+  color: black;
+  padding: 10px 50px;
+  font-size: 20px;
+  text-decoration: none;
+  border-radius: 20px;
+}
 .main .general .general__features .feature {
+  text-align: center;
   display: grid;
   grid-template-rows: 70px 130px auto;
   justify-items: center;

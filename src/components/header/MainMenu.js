@@ -8,6 +8,7 @@ import feedbacksIcon from '../../images/icons/feedbacks.png'
 import questionsIcon from '../../images/icons/questions.png'
 import truckIcon from '../../images/icons/truck.png'
 import profileIcon from "../../images/icons/profile.png";
+import logoutIcon from "../../images/icons/logout.png";
 
 function MainMenu(props) {
     const user = useSelector(state => state.user)
@@ -53,7 +54,7 @@ function MainMenu(props) {
             </NavLink>
         {user.status ==='Авторизован' &&
             <a href="src/components/header/Header" className="menu__link" onClick={handleLogout}>
-                <img className={'menu__icon'} src={homeIcon}/>
+                <img className={'menu__icon icon icon_light'} alt={'icon'} src={logoutIcon}/>
                 Выйти
             </a>}
     </>
