@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import car from "../routes/driver/Car";
 
 export const user = JSON.parse(localStorage.getItem('user')) || {}
-export const API_URL = 'http://transferabkhazia.online/api' // http://transferabkhazia.ru/ http://127.0.0.1:8000/
+export const API_URL = 'http://transferabkhazia.online/api' // http://transferabkhazia.online/ http://127.0.0.1:8000/
 export const headers = {headers: {'Authorization': `Token ${user.token}`}}
 
 export const authUser = createAsyncThunk('user/authUser', async ({username, password}, {rejectWithValue}) => {
@@ -78,7 +78,7 @@ const userSlice = createSlice({
             return data
         },
         [getCarStatus.fulfilled]: (state, action) => {
-            const car_status = action.payload[0].car.car_status
+            const car_status = action?.payload[0]?.car?.car_status
 
             const data = {...user, car_status}
             localStorage.setItem('user',  JSON.stringify(data))
