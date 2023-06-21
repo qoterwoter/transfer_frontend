@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import {NavLink, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {chooseRequestFromClient, fetchOrders, orderDetail} from "../../reducers/ordersSlice";
+import {chooseRequestFromClient, fetchOrders, fetchRating, orderDetail} from "../../reducers/ordersSlice";
 import {beautyTime} from "./OrdersList";
 import {userTag} from "../MainTitle";
 import arrow from '../../images/arrow.png'
 import NoResponses from "./NoResponses";
 import {API_URL} from "../../reducers/userSlice";
+import {StarIcon} from "./RateStars";
 
 export const getDuration = (timeString) => {
     const [hoursStr, minutesStr] = timeString.split(":");
@@ -22,8 +23,13 @@ function OrderDetailResponses(props) {
     const car = response?.driver?.car
 
     const driver = response?.driver?.user
+    const ratings = useSelector(state => state)
 
     const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(fetchRating(driver?.id))
+    }, [dispatch])
 
     const chooseDriver = async e => {
         e.preventDefault()
@@ -37,8 +43,6 @@ function OrderDetailResponses(props) {
         dispatch(orderDetail(id))
     }
 
-    console.log(driver)
-
     return (
     <div className={'response'} key={response.id}>
         <img className={'response__carPhoto'} src={`${API_URL.slice(0,-4)}/` + car?.car_photo_path}/>
@@ -50,9 +54,12 @@ function OrderDetailResponses(props) {
             </div>
             <div className="response__description">
                 <p className="response__carName">Данные о водителе</p>
-                <p className="resoinse__driver">Имя: {driver.first_name} {driver.last_name}</p>
+                <p className="response__driver">
+                    {driver.first_name} {driver.last_name} {response?.rating && response?.rating.toFixed(1)}
+                    {response.rating && <StarIcon fill={'#ED8A19'}/>}
+                </p>
                 <p className="response__duration">Почта: {driver.email}</p>
-                <p className="resoinse__driver">Телефон: {driver.phoneNumber}</p>
+                <p className="response__phone">Телефон: {driver.phoneNumber}</p>
             </div>
         </div>
     </div>

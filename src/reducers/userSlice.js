@@ -1,6 +1,7 @@
 import axios from "axios";
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import toast from "react-hot-toast";
+import car from "../routes/driver/Car";
 
 export const user = JSON.parse(localStorage.getItem('user')) || {}
 export const API_URL = 'http://127.0.0.1:8000/api' // http://transferabkhazia.ru/ http://127.0.0.1:8000/
@@ -26,6 +27,12 @@ export const updateUser = createAsyncThunk('user/updateUser', async (data) => {
     const response = await axios.put(`${API_URL}/users/${user.id}/`, data, headers)
     return response.data
 })
+
+export const getCarStatus = createAsyncThunk('user/getCarStatus', async () => {
+    const response = await axios.get(`${API_URL}/drivers/`, headers)
+    return response.data
+})
+
 
 const initialState = {
     'status': 'Не авторизован',
@@ -69,6 +76,14 @@ const userSlice = createSlice({
             localStorage.setItem('user',  JSON.stringify(data))
             toast.success('Успешно!')
             return data
+        },
+        [getCarStatus.fulfilled]: (state, action) => {
+            const car_status = action.payload[0].car.car_status
+
+            const data = {...user, car_status}
+            localStorage.setItem('user',  JSON.stringify(data))
+            return data
+
         }
     }
 })

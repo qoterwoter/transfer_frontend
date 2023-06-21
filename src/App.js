@@ -2,13 +2,16 @@ import React, {useEffect, useRef, useState} from "react";
 import Header from "./components/header/Header";
 import {Outlet, useLocation, useNavigate} from "react-router-dom";
 import { Toaster } from 'react-hot-toast';
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import Footer from "./components/Footer";
+import {getCarStatus} from "./reducers/userSlice";
 
 const App = () => {
     const navigate = useNavigate()
 
     const location = useLocation()
+
+    const dispatch = useDispatch()
 
     const user = useSelector(state => state.user)
 
@@ -21,6 +24,13 @@ const App = () => {
             setShowMenu(false)
         }
     }
+
+    useEffect(() => {
+        if(user.driver_id) {
+            dispatch(getCarStatus())
+        }
+    }, [dispatch])
+
     useEffect(() => {
         if (location.pathname.startsWith('/user') && user.status!=='Авторизован') {
             navigate('/')

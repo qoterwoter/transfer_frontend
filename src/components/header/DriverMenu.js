@@ -10,6 +10,8 @@ import calendarIcon from '../../images/icons/calendar.png'
 import profileIcon from '../../images/icons/profile.png'
 import truckIcon from '../../images/icons/truck.png'
 import logoutIcon from '../../images/icons/logout.png'
+import notificationIcon from '../../images/icons/notification.png'
+
 
 function UserMenu(props) {
     const dispatch = useDispatch()
@@ -27,6 +29,10 @@ function UserMenu(props) {
             <NavLink className="menu__link link" to={'/'}>
                 <img className={'menu__icon icon icon_light'} alt={'icon'} src={homeIcon}/>
                 Главная
+            </NavLink>
+            <NavLink className="menu__link link" to={'notification'}>
+                <img className={'menu__icon icon icon_light'} alt={'icon'} src={notificationIcon}/>
+                Уведомления
             </NavLink>
             <NavLink className="menu__link link" to={'requests'}>
                 <img className={'menu__icon icon '} alt={'icon'} src={requestsIcon}/>

@@ -50,6 +50,11 @@ export const setRate = createAsyncThunk('orders/setRate', async (data) => {
     }
 })
 
+export const fetchRating = createAsyncThunk('driver/fetchRating', async (driver_id) => {
+    const response = await axios.get(`${API_URL}/get-rating/${driver_id}/`, headers)
+    return response.data
+})
+
 const initialState = {
     orders: [],
     status: 'Нет данных'
@@ -89,6 +94,21 @@ const ordersSlice = createSlice({
         },
         [chooseRequestFromClient.fulfilled]: state => {
             toast.success("Водитель выбран!")
+        },
+        [fetchRating.fulfilled]: (state, action) => {
+            console.log(action.payload)
+
+            const rating = action.payload.ratings.reduce((acc, rating) => acc + (rating.driver_rating + rating.transport_rating + rating.communication_rating)/3, 0) / action.payload.ratings.length || null
+
+            const result = {
+                ...state.currentOrder.driver_responses.map(response => {
+                    if(action.payload.driver_id === response.driver.id) {
+                        response.rating = rating
+                    }
+                    return response
+                })
+            }
+            state = result
         }
     }
 })

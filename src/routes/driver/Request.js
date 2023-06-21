@@ -9,6 +9,7 @@ import {useLocation} from "react-router-dom";
 
 function Request(props) {
     const driver_id = useSelector(state => state.user.driver_id)
+    const car_status = useSelector(state => state.user.car_status)
 
     const request = props.request
 
@@ -46,7 +47,11 @@ function Request(props) {
             driver_id,
             price
         }
-
+        if(car_status!=='approved') {
+            toast.error('Ваша машина не прошла модерацию!')
+            toggleEdit()
+            return;
+        }
         await dispatch(chooseRequestFromDriver(data))
         dispatch(fetchOrders())
         toggleOffer()

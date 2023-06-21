@@ -4,6 +4,7 @@ import ordersSlice from "./reducers/ordersSlice";
 import supportSlice from "./reducers/supportSlice";
 import feedbacksSlice from "./reducers/feedbacksSlice";
 import carSlice from "./reducers/carSlice";
+import driverSlice from "./reducers/driverSlice";
 
 const rootReducer = combineReducers({
     user: userSlice,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
     support: supportSlice,
     feedbacks: feedbacksSlice,
     car: carSlice,
+    driver: driverSlice
 })
 
 export default rootReducer

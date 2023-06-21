@@ -552,6 +552,10 @@ body #root {
 .main .orderDetail .orderDetail__body .orderDetail__responses .response .container .response__description {
   padding: 12px;
 }
+.main .orderDetail .orderDetail__body .orderDetail__responses .response .container .response__description * {
+  display: flex;
+  align-items: center;
+}
 .main .orderDetail .orderDetail__body .orderDetail__responses .response .container .response__description .response__carName {
   margin: 0;
   font-size: 20px;
@@ -675,6 +679,12 @@ body #root {
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
 }
+.main .requests .requests__body .request .item__response .response__form {
+  grid-column: span 2;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
 .main .requests .requests__body .request .item__response .response__form .form__input {
   width: 80px;
 }
@@ -780,6 +790,7 @@ body #root {
     width: 100%;
   }
   .main .requests .requests__body .request .request__item:last-child {
+    width: 100%;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
